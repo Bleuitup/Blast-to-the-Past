@@ -1,0 +1,65 @@
+name        = "Blast to the Past"
+source_dir  = "source"
+output_dir  = "output"
+description = [=[mod id 3426836832
+
+This is Blast to the Past (B2TP)
+
+A vanilla-flavored Natural Selection 2 mod aimed balancing the game 6v6 to 8v8 conditions, the original intended size of public play of ns2, back to the time where 8v8 servers were commonplace.
+
+While stats on ns2panel.com show an almost 50-50 winrate (which is a good thing), in our experience most players have a higher marine than alien hiveskill, a rare 5 sight years ago.
+
+As a consequence, the hive skill system, using the per-team-hiveskills feature that didn't exist back them can simply solve these imbalances by slightly stacking the alien team with better players. This, in turn, creates a 50-50 winrate.
+However, if teams were to be sweapped then it would be expected the stronger,team would crush the opposition.
+
+In conclusion, while the game can be 'balanced' for single rounds, it's not truly balanced until a 50-50-ish winrate is achieved after teamswaps.
+
+This mod aims to attack the causes of this, by doing the least amount of changes whenever possible in the most impactful places. Most of these changes revert some values to what were vanilla values years ago, or were present in older or present compmod versions.
+
+Changes are as follows:
+
+**Aliens**
+
+Tunnels cost 5 Tres --was 8
+The total cost for a tunnel and 2 PVE is the same as in previous B2TP versions and 6Pres cheaper than vanilla. However, into the lategame this keeps a consistent scaling with more hives, while curbing excesive PvE proliferation in stalemate games.
+
+Lerk Spikes do 11 damage -- was 10
+Leap costs 55 energy -- was 45
+Boneshield has 600 hp -- was 1000, balanced for 10v10
+Vanilla Stomp moved to Bio9 --was 8, completely and utterly broken
+Vampirism Affects Exos and was toned down to 3.77% per shell
+
+Aura doesn't reveal health
+
+Cysts take x4 flamable instead of x7 flamable. Build at 6 seconds and get a x1.5 shift hive multiplier (compmod change, since vanilla cysting is broken in normal player counts)
+Mature Cyst Health changed to 300 (was 400)
+Lerks have 170 hp --was 180
+
+**Marines**
+
+Marines start with 1 IP (vanilla!) but
++5Tres on 7v7
++10Tres on 8v8
+
+This serves as an interpolation between 1IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10, which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 ammounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
+
+ARCs are limited to 4 and have 2000 hp -- was 2600
+
+Weapon drop costs normalized: welder drops cost 2 (from 3) and mine drops cost 5 (from 7)
+
+Sentry Battery costs 12 Tres --was 10
+Sentry costs 6 Tres --was 5
+
+Marines get Medpack Tech #1 and #2 from S13 compmod:
+Default meds: heal 25/25, identical to vanilla
+Medtech #1: unlocks in the command station, requires armory. Heal 30/20.
+Medtech #2: unlocks in the command station, requires AA and Medtech #1. Heal 40/10
+This makes medding scale as the round progresses, since vanilla meds are truly lacking in the end game.
+
+All Weapons (including shotgun, FT, GL) scale by 10% per weapon upgrade instead of 7.84% (?!) (this changes a W3 meatshot from 210 to 221 damage)
+
+Shotgun falloff start changed from 5m to 7.5m, and falloff end distance (where it does 50% damage) changed from 15m to 17.5m (this is half of the compmod change. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA)]=]
+image       = "preview.jpg"
+tag_modtype = "Gameplay Tweak"
+tag_support = "Must be run on Server"
+publish_id = 3426836832

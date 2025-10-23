@@ -1,0 +1,4 @@
+modEntry = {
+FileHooks = "lua/B2TP/FileHooks.lua",
+Priority = 28
+}
