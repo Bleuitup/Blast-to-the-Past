@@ -35,6 +35,7 @@ local pieces = {
 "Aura",
 "Costs",
 "Cysts",
+"Cyst Chains",
 "GUI",
 "Hitpoints",
 "MedpackTech",
