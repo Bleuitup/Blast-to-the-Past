@@ -1,0 +1,1 @@
+EnumUtils.AppendToEnum(kTechId, "Neurotoxin")
