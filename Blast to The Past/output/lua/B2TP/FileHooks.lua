@@ -36,6 +36,7 @@ local pieces = {
 "Chamber Passives",
 "Costs",
 "Cysts",
+"Cyst Chains",
 "GUI",
 "Hitpoints",
 "MedpackTech",
