@@ -1,6 +1,6 @@
 function SwipeBlink:GetDeathIconIndex()
-    if self:GetParent():GetHasThreeHives() then
-        return kDeathMessageIcon.Stab
+    if GetHasTech(self:GetParent(), kTechId.AdvancedSwipe) then
+        return kDeathMessageIcon.AdvancedSwipe
     else
         return kDeathMessageIcon.Swipe
     end
