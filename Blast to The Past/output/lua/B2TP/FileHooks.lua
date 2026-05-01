@@ -30,13 +30,14 @@ end
 
 local pieces = {
 
+"Adv Swipe - Stab",
 "Alien Abilities",
 "ARCs",
 "Aura",
 "Chamber Passives",
 "Costs",
-"Cysts",
 "Cyst Chains",
+"Cysts",
 "GUI",
 "Hitpoints",
 "MedpackTech",
