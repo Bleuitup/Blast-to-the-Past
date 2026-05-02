@@ -20,8 +20,8 @@ Changes are as follows:
 
 **Aliens**
 
-Tunnels cost 5 Tres --was 8
-The total cost for a tunnel and 2 PVE is the same as in previous B2TP versions and 6Pres cheaper than vanilla. However, into the lategame this keeps a consistent scaling with more hives, while curbing excesive PvE proliferation in stalemate games.
+Crag, Shade, Shift, Whip cost 10 Tres (was 13)
+(we have no idea why this was never re-adressed since this was changed circa the world championship and there have been multiple other related changes, like harsher supply limits and TRes tunnels that cost 16 total Tres to build)
 
 Lerk Spikes do 11 damage -- was 10
 Leap costs 55 energy -- was 45
@@ -56,7 +56,7 @@ Medtech #1: unlocks in the command station, requires armory. Heal 30/20.
 Medtech #2: unlocks in the command station, requires AA and Medtech #1. Heal 40/10
 This makes medding scale as the round progresses, since vanilla meds are truly lacking in the end game.
 
-All Weapons (including shotgun, FT, GL) scale by 10% per weapon upgrade instead of 7.84% (?!) (this changes a W3 meatshot from 210 to 221 damage)
+All Weapons (including shotgun, FT, GL) scale by 10% per weapon upgrade instead of 7.84% (?!) (this changes a W3 shotgun meatshot from 210 to 221 damage)
 
 Shotgun falloff start changed from 5m to 7.5m, and falloff end distance (where it does 50% damage) changed from 15m to 17.5m (this is half of the compmod change. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA)]=]
 image       = "preview.jpg"
