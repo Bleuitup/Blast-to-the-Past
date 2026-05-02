@@ -9,4 +9,4 @@ local function B2TP_SetEnumValue(enumTable, name, value)
 
 end
 
-B2TP_SetEnumValue(kDeathMessageIcon, "AdvancedSwipe", 3)
+B2TP_SetEnumValue(kDeathMessageIcon, "AdvancedSwipe", 53)
