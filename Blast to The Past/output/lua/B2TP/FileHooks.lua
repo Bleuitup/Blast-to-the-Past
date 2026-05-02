@@ -29,15 +29,15 @@ local function SetupFilehookFolders(modPath)
 end
 
 local pieces = {
-
 "Alien Abilities",
 "ARCs",
 "Aura",
 "CBM Stomp",
 "Chamber Passives",
 "Costs",
-"Cysts",
 "Cyst Chains",
+"Cysts",
+"Fade Abilities",
 "GUI",
 "Hitpoints",
 "MedpackTech",
