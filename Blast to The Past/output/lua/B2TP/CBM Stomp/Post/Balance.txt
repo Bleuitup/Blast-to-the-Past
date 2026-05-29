@@ -1,1 +1,0 @@
-kStompDamage = 50 --was 40
