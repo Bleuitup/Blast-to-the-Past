@@ -1,1 +1,1 @@
-kStompEnergyCost = 60 -- was 30
+kStompEnergyCost = 45 -- was 30
