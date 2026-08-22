@@ -134,7 +134,7 @@ function GUIAuraDisplay:Update(deltaTime)
         --local blue = self.isThunderdomeEnabled and 1 or 0
         --local color = Color(1, healthScalar, blue, 1)
 		
-		color = Color(1, 1, 1, 1) -- Changes all aura effects to thunderdome white
+		local color = Color(1, 1, 1, 1) -- Changes all aura effects to thunderdome white
 
         local offset = enemy:isa("Exo") and kExoHeartOffset or kHeartOffset
 
