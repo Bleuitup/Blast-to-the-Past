@@ -1,2 +1,2 @@
-Shotgun.kDamageFalloffStart = 7.5 --5
-Shotgun.kDamageFalloffEnd = 17.5 -- 15
+Shotgun.kDamageFalloffStart = 8 --5
+Shotgun.kDamageFalloffEnd = 18 -- 15

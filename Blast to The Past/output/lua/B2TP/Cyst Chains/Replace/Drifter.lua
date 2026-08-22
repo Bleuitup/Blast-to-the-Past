@@ -6,6 +6,11 @@
 --
 -- AI controllable glowing insect that the alien commander can control.
 --
+-- B2TP version:
+--  - Keeps vanilla behavior
+--  - Adds CBM-style queued cyst-chain Grow orders
+--  - Does NOT include the broader CBM Drifter AI/follow rewrites
+--
 -- ========= For more information, visit us at http://www.unknownworlds.com =====================
 
 Script.Load("lua/ScriptActor.lua")
@@ -385,16 +390,18 @@ function Drifter:OnOrderGiven(newOrder)
 
         local oldTimeLastOrder = self.timeLastOrder
         local cysts = GetEntitiesForTeam("Cyst", self:GetTeamNumber())
-        local cystChain = {}
+        local cystChain = { orderTarget }
 
         self.reconstructingChain = true
         self:ReConstructCystChain(cysts, cystChain, orderTarget, 0)
 
+        self.queuingCystChain = true
         for _, cyst in ipairs(cystChain) do
             -- GiveOrder() rate-limits orders, so clear the delay for each queued grow order.
             self.timeLastOrder = 0
             self:GiveOrder(kTechId.Grow, cyst:GetId(), cyst:GetOrigin(), nil, false, false)
         end
+        self.queuingCystChain = nil
 
         self.reconstructingChain = nil
         self.timeLastOrder = oldTimeLastOrder
@@ -420,7 +427,7 @@ function Drifter:ReConstructCystChain(cysts, cystChain, currCyst, depth)
 
         if parent and not cyst:GetIsBuilt() and parent == currCyst then
             table.insert(cystChain, cyst)
-            self:ReConstructCystChain(cysts, cystChain, cyst, depth + 1)
+            return self:ReConstructCystChain(cysts, cystChain, cyst, depth + 1)
         end
 
     end
@@ -433,6 +440,17 @@ function Drifter:OnOverrideOrder(order)
 
     if order:GetParam() ~= nil then
         orderTarget = Shared.GetEntity(order:GetParam())
+    end
+
+    -- B2TP: preserve internally queued cyst-chain Grow orders as Grow.
+    if self.queuingCystChain
+            and order:GetType() == kTechId.Grow
+            and orderTarget
+            and orderTarget:isa("Cyst") then
+
+        PlayOrderedSounds(self)
+        return
+
     end
 
     local orderType = order:GetType()
