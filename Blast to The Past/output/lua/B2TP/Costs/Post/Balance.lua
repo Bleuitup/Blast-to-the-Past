@@ -5,9 +5,9 @@
 --kCragCost = 10 -- was 13
 --kShiftCost = 10 -- was 13
 --kWhipCost = 10 -- was 13
-kTunnelEntranceCost = 5 -- was 8
-kTunnelExitCost = 5 -- was 8
-kTunnelRelocateCost = 3 -- was 6
+kTunnelEntranceCost = 8 -- vanilla; gorges can now drop tunnels for pres instead
+kTunnelExitCost = 8 -- vanilla; gorges can now drop tunnels for pres instead
+kTunnelRelocateCost = 5 -- was 6
 
 -- ## MARINES
 kWelderCost = 2 -- was 2
