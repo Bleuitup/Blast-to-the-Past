@@ -42,6 +42,7 @@ local pieces = {
 "Hitpoints",
 "MedpackTech",
 "PlayerCount",
+"Vanilla Fixes",
 "Weapons"
 }
 
