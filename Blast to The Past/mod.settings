@@ -63,14 +63,13 @@ Chambers get their hive passives back:
 [h3]Tunnels[/h3]
 [list]
 [*][b]Gorges can drop tunnels[/b] 5 Pres per end, but only into a room whose power node is down, or onto infestation. They come up fully mature and spread infestation immediately
-[*][b]Commander entrance and exit[/b] unchanged at 8 Tres
 [*][b]Relocating[/b] 6 -> 5 Tres
 [*][b]Minimap[/b] tunnel entrances are now labelled Entry 1-4 and Exit 1-4 on the map
 [/list]
 
 [h3]Hallucinations[/h3]
 [list]
-[*][b]Biomass health[/b] removed -- a hallucinated lifeform is now as tough as that lifeform was at Bio1, instead of scaling all game
+[*][b]Biomass health[/b] removed -- hallucinations no longer get tougher as biomass rises
 [*][b]Abilities[/b] can no longer use Umbra, Spores or Stomp
 [/list]
 
