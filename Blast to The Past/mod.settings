@@ -20,20 +20,29 @@ Changes are as follows:
 
 **Aliens**
 
-Crag, Shade, Shift, Whip cost 10 Tres (was 13)
-(we have no idea why this was never re-adressed since this was changed circa the world championship and there have been multiple other related changes, like harsher supply limits and TRes tunnels that cost 16 total Tres to build)
-
 Lerk Spikes do 11 damage -- was 10
 Leap costs 55 energy -- was 45
 Boneshield has 600 hp -- was 1000, balanced for 10v10
-Vanilla Stomp moved to Bio9 --was 8, completely and utterly broken
-Vampirism Affects Exos and was toned down to 3.77% per shell
+Stomp costs 45 energy -- was 30
+Skulk Vampirism toned down to 3.77% per shell -- was 4.66%. Vampirism also works on Exos now
 
 Aura doesn't reveal health
 
-Cysts take x4 flamable instead of x7 flamable. Build at 6 seconds and get a x1.5 shift hive multiplier (compmod change, since vanilla cysting is broken in normal player counts)
+Chambers get their hive passives back:
+Shells regenerate themselves out of combat with a Crag hive
+Veils cloak themselves out of combat with a Shade hive
+Spurs can be picked up and moved by the commander with a Shift hive
+
+Fades get Advanced Swipe at Bio8 (+8% swipe damage, 30 Tres, 90 second research)
+Stab costs 25 energy -- was 30, and researches for 20 Tres -- was 25
+
+Cysts take x4 from welders instead of x7 (flamethrowers are unchanged). Build at 6 seconds and get a x1.5 shift hive multiplier (compmod change, since vanilla cysting is broken in normal player counts)
 Mature Cyst Health changed to 300 (was 400)
+Cyst detection range is 10m -- was 8m
+Drifters ordered onto an unbuilt cyst will queue up the whole chain behind it instead of one cyst at a time
 Lerks have 170 hp --was 180
+
+Tunnel entrances and exits cost 5 Tres --was 8, and relocating costs 3 --was 6
 
 **Marines**
 
@@ -43,9 +52,10 @@ Marines start with 1 IP (vanilla!) but
 
 This serves as an interpolation between 1IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10, which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 ammounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
 
-ARCs are limited to 4 and have 2000 hp -- was 2600
+ARCs are limited to 4 and have 2100 hp / 500 armor -- was 2600 hp / 400 armor
 
 Weapon drop costs normalized: welder drops cost 2 (from 3) and mine drops cost 5 (from 7)
+Dropped weapons stay on the ground for 20 seconds --was 16
 
 Sentry Battery costs 12 Tres --was 10
 Sentry costs 6 Tres --was 5
