@@ -40,6 +40,7 @@ local pieces = {
 "Fade Abilities",
 "GUI",
 "Hitpoints",
+"MACs",
 "MedpackTech",
 "PlayerCount",
 "Weapons"
