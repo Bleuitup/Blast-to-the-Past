@@ -54,6 +54,11 @@ local function ApplyBackIcon(button)
     button.graphicItem:SetTexture(kBackIconTexture)
     button.graphicItem:SetTexturePixelCoordinates(GUIGetSprite(col, row, kBackIconCellSize, kBackIconCellSize))
 
+    -- The gorge atlas has its orange baked into the art, so vanilla never tints graphicItem.
+    -- The commander atlas is plain white, so tint this one to match. kAvailableColor is
+    -- kAlienTeamColorFloat, Color(1, 0.792, 0.227) -- the same alien gold the menu already uses.
+    button.graphicItem:SetColor(GUIGorgeBuildMenu.kAvailableColor)
+
 end
 
 local rowTable
