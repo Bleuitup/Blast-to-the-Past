@@ -38,6 +38,7 @@ local pieces = {
 "Cyst Chains",
 "Cysts",
 "Fade Abilities",
+"Hallucinations",
 "GUI",
 "Hitpoints",
 "MACs",
