@@ -34,6 +34,28 @@ function GUIGorgeBuildMenu:SetIsVisible(isVisible)
     self.background:SetIsVisible(isVisible == true)
 end
 
+-- The gorge build menu atlas (ui/gorge_build_menu.dds) is 384x640 with 128px cells, i.e. only
+-- 3 columns by 5 rows. CompMod puts the Back button on row 6, which does not exist, so the
+-- sampler wraps to row 1 and it renders as a Hydra.
+--
+-- Draw it from the commander atlas instead, which has a proper arrow. ui/buildmenu.dds is 960
+-- wide with 80px cells (12 columns), and index 121 -- column 2, row 11 counting from 1 -- is the
+-- Follow/FollowAlien arrow.
+local kBackIconTexture = "ui/buildmenu.dds"
+local kBackIconColumns = 12
+local kBackIconCellSize = 80
+local kBackIconIndex = 121
+
+local function ApplyBackIcon(button)
+
+    local col = (kBackIconIndex % kBackIconColumns) + 1
+    local row = math.floor(kBackIconIndex / kBackIconColumns) + 1
+
+    button.graphicItem:SetTexture(kBackIconTexture)
+    button.graphicItem:SetTexturePixelCoordinates(GUIGetSprite(col, row, kBackIconCellSize, kBackIconCellSize))
+
+end
+
 local rowTable
 local function GetRowForTechId(techId)
     PROFILE("GUIGorgeBuildMenu::GetRowForTechId")
@@ -76,6 +98,10 @@ function GUIGorgeBuildMenu:CreateButton(techId, scale, frame, keybind, position)
         col = 3
     end
     button.graphicItem:SetTexturePixelCoordinates(GUIGetSprite(col, row, GUIGorgeBuildMenu.kPixelSize, GUIGorgeBuildMenu.kPixelSize))
+
+    if button.techId == kTechId.GorgeTunnelMenuBack then
+        ApplyBackIcon(button)
+    end
 
     return button
 end
@@ -441,6 +467,10 @@ local function UpdateButton(self, button, index)
 
     button.smokeyBackground:SetIsVisible(Client.GetHudDetail() ~= kHUDMode.Minimal)
     button.graphicItem:SetTexturePixelCoordinates(GUIGetSprite(col, row, GUIGorgeBuildMenu.kPixelSize, GUIGorgeBuildMenu.kPixelSize))
+
+    if button.techId == kTechId.GorgeTunnelMenuBack then
+        ApplyBackIcon(button)
+    end
     button.description:SetColor(color)
     button.costIcon:SetColor(color)
     button.costText:SetColor(color)
