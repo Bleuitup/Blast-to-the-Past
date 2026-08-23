@@ -214,7 +214,16 @@ function TunnelAbility:CreateStructure(coords, player, lastClickedPosition)
         end
     end
 
-    return tunnelManager:CreateTunnelEntrance(coords.origin, techId)
+    local tunnelEntrance = tunnelManager:CreateTunnelEntrance(coords.origin, techId)
+
+    -- B2TP: gorge-dropped tunnels come up already infested. Applied here rather than in
+    -- TunnelEntrance:OnInitialized (which is what CompMod hooks) so the commander's own
+    -- tunnels are untouched and still have to research the upgrade.
+    if tunnelEntrance then
+        tunnelEntrance:UpgradeToTechId(kTechId.InfestedTunnel)
+    end
+
+    return tunnelEntrance
 end
 
 function TunnelAbility:GetNetwork()
