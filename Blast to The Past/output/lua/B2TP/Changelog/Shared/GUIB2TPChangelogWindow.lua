@@ -17,8 +17,17 @@ Script.Load("lua/menu2/MenuStyles.lua")
 Script.Load("lua/B2TP/Changelog/Shared/ChangelogData.lua")
 
 -- Each change-list line is prefixed with this many '#' to mark its heading level. 0 = body text.
-local function GetHeadingToken()
-    return "#"
+-- Splits a leading run of '#' characters off a changelog line and returns the heading level
+-- (0 for a plain line) plus the remaining text. Deliberately only LEADING '#'s count, matching
+-- ordinary Markdown heading syntax -- CBM's original implementation instead used
+-- string.gsub(rawLine, "#", "") to count every '#' anywhere in the line, which misreads any line
+-- that happens to mention something like "Medtech #1" as a level-1 heading (the biggest style),
+-- since that line contains exactly one '#'. This version does not have that failure mode.
+local function SplitHeadingLevel(rawLine)
+    local hashes = string.match(rawLine, "^#*")
+    local level = string.len(hashes)
+    local rest = string.sub(rawLine, level + 1)
+    return rest, level
 end
 
 local kInnerBackgroundSideSpacing = 32
@@ -48,11 +57,20 @@ GUIB2TPChangelogWindow:AddClassProperty("IsOpen", false)
 -- renders as 2300x1600 real screen pixels -- far larger than the window on anything under 4K.
 local kMockupRes = Vector(3840, 2160, 0)
 
+-- Pushes the window down clear of the top nav bar. CBM's original had this same idea
+-- (SetY(900)) but as a flat unscaled number; a previous version of this file dropped it
+-- entirely on the theory that AlignCenter() alone was enough, but centering on the FULL screen
+-- height puts the window's top edge up behind the nav bar strip, hiding the first line of
+-- content. Restored here, scaled the same way position offsets are scaled elsewhere in this
+-- framework (see kTopRightButtonPosition * scale in GUIMainMenu.lua).
+local kYOffset = 900
+
 local function UpdateResolutionScaling(self, newX, newY)
     local res = Vector(newX, newY, 0)
     local scale = res / kMockupRes
     scale = math.min(scale.x, scale.y)
     self:SetScale(scale, scale)
+    self:SetY(kYOffset * scale)
 end
 
 function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
@@ -87,10 +105,6 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:HookEvent(self.tabButton, "OnTabSizeChanged", self.SetTabSize)
     self:SetTabSize(self.tabButton:GetTabSize())
 
-    -- No extra Y offset: AlignCenter() alone keeps the window centred at any scale. CBM's
-    -- original additionally called SetY(900) to push its window down the screen, but that offset
-    -- is in unscaled mockup-space units, so it would need its own scale multiplication to stay
-    -- correct across resolutions. Simpler to just not have it.
     self:SetSize(2300, 1600)
     self:Close()
 
@@ -164,7 +178,6 @@ function GUIB2TPChangelogWindow:LoadChangelog(changelogText)
 
     self.contentObs = {}
 
-    local headingToken = GetHeadingToken()
     local changelogLines = string.Explode(changelogText, "\n")
 
     -- Keep track of consecutive lines with the same style so we don't create one GUI object per
@@ -175,8 +188,8 @@ function GUIB2TPChangelogWindow:LoadChangelog(changelogText)
     for i = 1, #changelogLines do
 
         local rawLine = changelogLines[i]
-        local processedLine, numTokens = string.gsub(rawLine, headingToken, "")
-        processedLine = string.format("  %s", processedLine)
+        local rest, numTokens = SplitHeadingLevel(rawLine)
+        local processedLine = string.format("  %s", rest)
 
         if i == 1 then
 
