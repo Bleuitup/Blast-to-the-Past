@@ -16,7 +16,6 @@ Script.Load("lua/menu2/MenuStyles.lua")
 
 Script.Load("lua/B2TP/Changelog/Shared/ChangelogData.lua")
 
--- Each change-list line is prefixed with this many '#' to mark its heading level. 0 = body text.
 -- Splits a leading run of '#' characters off a changelog line and returns the heading level
 -- (0 for a plain line) plus the remaining text. Deliberately only LEADING '#'s count, matching
 -- ordinary Markdown heading syntax -- CBM's original implementation instead used
@@ -58,21 +57,20 @@ GUIB2TPChangelogWindow:AddClassProperty("IsOpen", false)
 local kMockupRes = Vector(3840, 2160, 0)
 
 -- Pushes the window down clear of the top nav bar, without pushing it so far down that the
--- bottom runs into the nav bar's own newsFeed pullout tab strip anchored at the screen bottom
--- (GUIMenuNavBar.kNewsFeedSize).
+-- bottom (the CLOSE tab) runs into the nav bar's own newsFeed pullout tab strip anchored at the
+-- screen bottom (GUIMenuNavBar.kNewsFeedSize).
 --
--- 900, copied from CBM's SetY(900), overshot badly: cleared the top fine but pushed the bottom
--- behind that tab strip. GUIMenuNavBar.topEdge (271) was considered instead, but it's measured
--- in the nav bar's own coordinate space -- almost certainly top-anchored, Y=0 at the screen's
--- top edge -- while this window is center-anchored via AlignCenter(), Y=0 at screen centre.
--- Those are not the same space, so 271 here is not necessarily equivalent and risks undershooting
--- back into the original bug (title hidden entirely).
---
--- 450 is a deliberate middle value between the two known data points (0 undershoots, 900
--- overshoots), not a derived one -- there is no way to render this GUI framework outside the
--- actual game to compute the correct number directly. Paired with a shorter SetSize below so a
--- misjudged offset in either direction has more margin to still clear both edges.
-local kYOffset = 450
+-- History, since there is no way to render this GUI framework outside the actual game to compute
+-- the correct number directly -- every value here comes from a screenshot, not a derivation:
+--   0   : title and first content line hidden entirely behind the top nav bar.
+--   900 : copied from CBM's SetY(900). Cleared the top with room to spare, but overshot at the
+--         bottom -- the CLOSE tab ran into the newsFeed strip.
+--   450 : first correction. Cleared the bottom mostly, but the CLOSE tab was still slightly
+--         clipped, and the screenshot showed a large unused gap above the title -- room to
+--         still go further up.
+--   300 : current value. Trimmed further based on that gap. Paired with a shorter SetSize below
+--         so a misjudged offset in either direction has more margin to still clear both edges.
+local kYOffset = 300
 
 local function UpdateResolutionScaling(self, newX, newY)
     local res = Vector(newX, newY, 0)
@@ -114,10 +112,11 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:HookEvent(self.tabButton, "OnTabSizeChanged", self.SetTabSize)
     self:SetTabSize(self.tabButton:GetTabSize())
 
-    -- Height cut from CBM's original 1600 to 1150 so the box has real margin at both the top
-    -- (nav bar) and bottom (newsFeed tab strip) instead of nearly spanning the full screen
-    -- height, which left almost no slack for kYOffset to be even slightly wrong.
-    self:SetSize(2300, 1150)
+    -- Height cut from CBM's original 1600, now to 1000 (was 1150 for one test pass) so the box
+    -- has real margin at both the top (nav bar) and bottom (newsFeed tab strip) instead of
+    -- nearly spanning the full screen height, which left almost no slack for kYOffset to be
+    -- even slightly wrong.
+    self:SetSize(2300, 1000)
     self:Close()
 
     self:LoadChangelog(GetB2TPChangelogText())
@@ -168,6 +167,14 @@ local function GetStyleColor(style)
     return kStyleToColorMap[style] or kStyleToColorMap[0]
 end
 
+-- GUIMenuScrollBarWidget.kScrollBarThickness is 32. The scroll pane's own width includes the
+-- room the scrollbar sits in, but paragraphSize below wasn't accounting for it, so the wrap
+-- width matched the FULL pane width and long lines ran their last few characters in behind the
+-- scrollbar track -- visible in testing as a line splitting mid-word ("grenad|launcher.") with
+-- no hyphen, rather than wrapping the whole word. This margin keeps the wrap width inside the
+-- part of the pane that's actually clear of the scrollbar.
+local kScrollBarClearance = 32 + 12
+
 local function AddLineGroup(self, lineGroup, style, lineNumber)
 
     local lineGroupObj = CreateGUIObject(string.format("lineGroup_%d", lineNumber), GUIParagraph, self.listLayout,
@@ -175,7 +182,7 @@ local function AddLineGroup(self, lineGroup, style, lineNumber)
         justification = GUIItem.Align_Min,
         font = GetStyleFont(style),
         color = GetStyleColor(style),
-        paragraphSize = Vector(self.scrollPane:GetSize().x, -1, 0),
+        paragraphSize = Vector(self.scrollPane:GetSize().x - kScrollBarClearance, -1, 0),
         text = lineGroup
     })
     table.insert(self.contentObs, lineGroupObj)

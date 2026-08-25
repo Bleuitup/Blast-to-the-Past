@@ -7,11 +7,16 @@
 -- popup instead writes each change as a full sentence (CBM's balance changelog convention),
 -- which reads better in a scrollable in-game window. Translate, don't copy verbatim.
 --
+-- The two texts are also organised differently on the alien side: mod.settings groups by
+-- category (Lifeforms / Fade / Upgrades / ...), this groups alien changes by lifeform (Skulk /
+-- Gorge / Lerk / Fade / Onos), since that's the more useful lookup when a player wants to know
+-- "what changed about the thing I'm about to play."
+--
 -- Markup, matching kStyleToFontsMap in GUIB2TPChangelogWindow.lua. Heading markers only count
 -- when LEADING the line (see SplitHeadingLevel in GUIB2TPChangelogWindow.lua) -- a '#' anywhere
 -- else, such as in "Medtech #1", is just a character:
 --   ## line   -> section heading   (ALIENS / MARINES)
---   ### line  -> subsection heading (Lifeforms, Fade, Cysts, ...)
+--   ### line  -> subsection heading (Skulk, Gorge, Lerk, Fade, Onos, ...)
 --   plain line, prefixed "  - "    -> a change
 --
 -- One double-quoted string per line, joined with table.concat, rather than a single [[ ]] long
@@ -27,20 +32,27 @@ local kChangelogLines =
     "",
     "## ALIENS",
     "",
-    "### Lifeforms",
+    "### Skulk",
+    "  - Leap energy cost increased from 45 to 55.",
+    "  - Vampirism reduced from 4.66% to 3.77% per shell (compmod change). Vampirism now also works on Exos.",
+    "",
+    "### Gorge",
+    "  - Gorges can now drop tunnels themselves for 5 Pres per end (compmod change), but only into a room whose power node is down, or onto infestation. This keeps tunnels out of a powered marine base, or right next to one. Gorge-dropped tunnels come up fully mature and spread infestation immediately.",
+    "",
+    "### Lerk",
     "  - Lerk health reduced from 180 to 170.",
     "  - Lerk spike damage increased from 10 to 11.",
-    "  - Leap energy cost increased from 45 to 55.",
-    "  - Boneshield HP reduced from 1000 to 600 (1000 was balanced for 10v10).",
-    "  - Stomp energy cost increased from 30 to 45, to curb stomp spam when the alien team has no adrenaline or a shift to sustain it.",
     "",
     "### Fade",
-    "  - New Advanced Swipe upgrade at Bio8: +8% swipe damage, costs 30 Tres, 90 second research.",
+    "  - New Advanced Swipe upgrade at Biomass 8: +8% swipe damage, costs 30 Tres, 90 second research. Exists to give Armor 3 a reason to exist: without it, a Fade's plain Swipe already three-hit-kills an Armor 2 marine, so the extra armor point barely mattered.",
     "  - Stab energy cost reduced from 30 to 25.",
     "  - Stab research cost reduced from 25 to 20 Tres.",
     "",
+    "### Onos",
+    "  - Boneshield HP reduced from 1000 to 600 (1000 was balanced for 10v10).",
+    "  - Stomp energy cost increased from 30 to 45, to curb stomp spam when the alien team has no adrenaline or a shift to sustain it.",
+    "",
     "### Upgrades",
-    "  - Skulk Vampirism reduced from 4.66% to 3.77% per shell (compmod change). Vampirism now also works on Exos.",
     "  - Aura no longer reveals enemy health.",
     "",
     "### Chamber hive passives",
@@ -57,7 +69,7 @@ local kChangelogLines =
     "  - Drifters ordered onto an unbuilt cyst now queue up the whole chain behind it, instead of one cyst at a time.",
     "",
     "### Tunnels",
-    "  - Gorges can now drop tunnels for 5 Pres per end, but only into a room whose power node is down, or onto infestation. They come up fully mature and spread infestation immediately.",
+    "  - Commander-dropped tunnel entrances and exits are unchanged.",
     "  - Tunnel relocate cost reduced from 6 to 5 Tres.",
     "  - Tunnel entrances are now labelled Entry 1-4 and Exit 1-4 on the map.",
     "",
@@ -83,6 +95,7 @@ local kChangelogLines =
     "  - Dropped weapons now stay on the ground for 20 seconds, up from 16.",
     "",
     "### Medpack Tech",
+    "  - Ported from ENSL CompMod seasons 13 and 14.",
     "  - New Medtech #1 upgrade (Command Station + Armory): medpacks heal 30 instantly and 20 over time.",
     "  - New Medtech #2 upgrade (Command Station + Advanced Armory + Medtech #1): medpacks heal 40 instantly and 10 over time.",
     "  - Medpacks scale as the round goes on, since vanilla meds fall behind in the end game.",
