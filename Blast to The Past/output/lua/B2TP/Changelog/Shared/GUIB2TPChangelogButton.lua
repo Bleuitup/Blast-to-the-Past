@@ -2,8 +2,9 @@
 -- buttons in the corner of the main menu -- no server connection or map load needed to see it,
 -- so this is the cheapest thing in the whole mod to test: launch the mod and look at the menu.
 --
--- Icon is the mod's own 8v8 logo, shipped at ui/b2tp_changelog_icon.dds. 160x160 uncompressed
--- RGBA with mipmaps, matching the format of vanilla's own menu link buttons.
+-- PLACEHOLDER ICON: a plain white 160x160 square (ui/b2tp_changelog_icon.dds), same format as
+-- vanilla's own menu link buttons (uncompressed RGBA, 8 mipmaps). Swap the file for real art
+-- later; nothing else in this file needs to change to do that.
 --
 -- Regular and hover use the same texture. GUIMenuPowerButton draws the hover graphic as a
 -- second layer that fades in over the normal one, so an identical texture still reads as a
