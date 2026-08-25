@@ -37,6 +37,24 @@ class "GUIB2TPChangelogWindow" (baseClass)
 
 GUIB2TPChangelogWindow:AddClassProperty("IsOpen", false)
 
+-- The whole menu is authored against a 3840x2160 canvas and scaled down to the real screen
+-- resolution. Every top-level menu widget applies this scale to itself -- GUIMainMenu's own
+-- corner/link buttons do it in their layoutButtons closure, and GUIMenuNavBar does the identical
+-- calculation in its UpdateResolutionScaling. It is NOT inherited automatically from a parent;
+-- each object is responsible for calling SetScale on itself.
+--
+-- This window is created with parent = nil (see GUIB2TPChangelogButton.lua), so it never picks up
+-- this scale from an ancestor and must compute and apply it directly, or SetSize(2300, 1600) below
+-- renders as 2300x1600 real screen pixels -- far larger than the window on anything under 4K.
+local kMockupRes = Vector(3840, 2160, 0)
+
+local function UpdateResolutionScaling(self, newX, newY)
+    local res = Vector(newX, newY, 0)
+    local scale = res / kMockupRes
+    scale = math.min(scale.x, scale.y)
+    self:SetScale(scale, scale)
+end
+
 function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     errorDepth = (errorDepth or 1) + 1
 
@@ -46,6 +64,9 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
 
     self:AlignCenter()
     self:SetLayer(999)
+
+    UpdateResolutionScaling(self, Client.GetScreenWidth(), Client.GetScreenHeight())
+    self:HookEvent(GetGlobalEventDispatcher(), "OnResolutionChanged", UpdateResolutionScaling)
 
     self.title = CreateGUIObject("title", GUIText, self)
     self.title:SetFont(kTitleFont)
@@ -66,8 +87,11 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:HookEvent(self.tabButton, "OnTabSizeChanged", self.SetTabSize)
     self:SetTabSize(self.tabButton:GetTabSize())
 
+    -- No extra Y offset: AlignCenter() alone keeps the window centred at any scale. CBM's
+    -- original additionally called SetY(900) to push its window down the screen, but that offset
+    -- is in unscaled mockup-space units, so it would need its own scale multiplication to stay
+    -- correct across resolutions. Simpler to just not have it.
     self:SetSize(2300, 1600)
-    self:SetY(900)
     self:Close()
 
     self:LoadChangelog(GetB2TPChangelogText())
