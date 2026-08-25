@@ -68,9 +68,13 @@ local kMockupRes = Vector(3840, 2160, 0)
 --   450 : first correction. Cleared the bottom mostly, but the CLOSE tab was still slightly
 --         clipped, and the screenshot showed a large unused gap above the title -- room to
 --         still go further up.
---   300 : current value. Trimmed further based on that gap. Paired with a shorter SetSize below
---         so a misjudged offset in either direction has more margin to still clear both edges.
-local kYOffset = 300
+--   300 : trimmed further based on that gap. The bottom edge (kYOffset + height/2 = 800) was
+--         confirmed good at this point -- the request became "keep where it ends, grow upward."
+--   150 : current value. Paired with a taller SetSize below (1000 -> 1300) chosen specifically
+--         to keep kYOffset + height/2 == 800, so the bottom edge and the CLOSE tab stay exactly
+--         where they already tested fine, while the top edge moves up by the same 300 the
+--         height grew by.
+local kYOffset = 150
 
 local function UpdateResolutionScaling(self, newX, newY)
     local res = Vector(newX, newY, 0)
@@ -112,11 +116,11 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:HookEvent(self.tabButton, "OnTabSizeChanged", self.SetTabSize)
     self:SetTabSize(self.tabButton:GetTabSize())
 
-    -- Height cut from CBM's original 1600, now to 1000 (was 1150 for one test pass) so the box
-    -- has real margin at both the top (nav bar) and bottom (newsFeed tab strip) instead of
-    -- nearly spanning the full screen height, which left almost no slack for kYOffset to be
-    -- even slightly wrong.
-    self:SetSize(2300, 1000)
+    -- Height: 1600 (CBM) -> 1150 -> 1000 -> 1300 (current), the last change paired with
+    -- kYOffset above dropping by exactly half the height increase (300 -> 150), so the bottom
+    -- edge stays fixed at the position already confirmed to clear the newsFeed strip, and only
+    -- the top edge moves up, making the box taller without touching what already worked.
+    self:SetSize(2300, 1300)
     self:Close()
 
     self:LoadChangelog(GetB2TPChangelogText())

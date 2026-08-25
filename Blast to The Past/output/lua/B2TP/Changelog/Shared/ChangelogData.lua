@@ -44,7 +44,7 @@ local kChangelogLines =
     "  - Lerk spike damage increased from 10 to 11.",
     "",
     "### Fade",
-    "  - New Advanced Swipe upgrade at Biomass 8: +8% swipe damage, costs 30 Tres, 90 second research. Exists to give Armor 3 a reason to exist: without it, a Fade's plain Swipe already three-hit-kills an Armor 2 marine, so the extra armor point barely mattered.",
+    "  - New Advanced Swipe upgrade at Biomass 8: +8% swipe damage, costs 30 Tres, 90 second research. This will kill a marine on armor 2 in three swipes. Countered by armor 3.",
     "  - Stab energy cost reduced from 30 to 25.",
     "  - Stab research cost reduced from 25 to 20 Tres.",
     "",
