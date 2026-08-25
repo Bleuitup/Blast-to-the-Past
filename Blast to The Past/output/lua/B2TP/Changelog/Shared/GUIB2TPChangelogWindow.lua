@@ -1,10 +1,10 @@
 -- The B2TP in-game changelog popup.
 --
--- Structurally the same idea as ENSL/CBM's balance-mod changelog window (GUIBetaBalanceChangelog),
--- rebuilt from scratch against vanilla's menu2 GUI framework so it has no dependency on CBM and no
--- class-name collision if this mod ever runs alongside CBM -- which is the user's stated long-term
--- plan for this server. Trimmed of CBM's "seen this version" tracking and attention-getting rock
--- animation; this is a plain always-available reference window.
+-- Built on vanilla's menu2 GUI framework: GUIMenuTabbedBox for the frame, GUIMenuScrollPane for
+-- scrolling, GUIParagraph for the text. Nothing here depends on any other mod.
+--
+-- A plain, always-available reference window: no "seen this version" tracking, no attention
+-- animation on the button. Open it whenever you want to check what the mod changes.
 
 Script.Load("lua/GUI/GUIObject.lua")
 Script.Load("lua/menu2/GUIMenuTabbedBox.lua")

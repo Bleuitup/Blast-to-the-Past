@@ -1,9 +1,8 @@
 -- The B2TP in-game changelog text.
 --
--- Hand-maintained copy of the change list from mod.settings' description. mod.settings itself is
--- never shipped in the mod (only output/ is packaged), and its BBCode is Steam-only markup the
--- game can't render, so there is no way to load it at runtime -- this has to be kept in sync by
--- hand whenever the Workshop description changes.
+-- MAINTENANCE: this is a hand-maintained copy of the change list in mod.settings, updated
+-- deliberately as part of each release rather than read from that file at runtime. When you
+-- change the Workshop description, mirror the change here too.
 --
 -- Deliberately drops the "mod id" line and the intro essay (winrate/hiveskill rationale): useful
 -- on the Workshop page, not useful mid-game. Keeps every change and every inline justification.

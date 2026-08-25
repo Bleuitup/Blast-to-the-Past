@@ -2,9 +2,13 @@
 -- buttons in the corner of the main menu -- no server connection or map load needed to see it,
 -- so this is the cheapest thing in the whole mod to test: launch the mod and look at the menu.
 --
--- PLACEHOLDER ART: reuses vanilla's wiki button icon (ui/newMenu/wikiButton.dds /
--- wikiButtonOver.dds) rather than shipping new art. Swap kTextureRegular/kTextureHover for a
--- custom icon later; nothing else about this file needs to change to do that.
+-- Icon is the mod's own 8v8 logo, shipped at ui/b2tp_changelog_icon.dds. 160x160 uncompressed
+-- RGBA with mipmaps, matching the format of vanilla's own menu link buttons.
+--
+-- Regular and hover use the same texture. GUIMenuPowerButton draws the hover graphic as a
+-- second layer that fades in over the normal one, so an identical texture still reads as a
+-- brightening on mouse-over; a distinct hover variant can be added later by pointing
+-- kTextureHover at a second file.
 
 Script.Load("lua/menu2/GUIMenuExitButton.lua")
 Script.Load("lua/menu2/wrappers/Tooltip.lua")
@@ -15,8 +19,8 @@ local baseClass = GUIMenuExitButton
 baseClass = GetTooltipWrappedClass(baseClass)
 class "GUIB2TPChangelogButton" (baseClass)
 
-GUIB2TPChangelogButton.kTextureRegular = PrecacheAsset("ui/newMenu/wikiButton.dds")
-GUIB2TPChangelogButton.kTextureHover   = PrecacheAsset("ui/newMenu/wikiButtonOver.dds")
+GUIB2TPChangelogButton.kTextureRegular = PrecacheAsset("ui/b2tp_changelog_icon.dds")
+GUIB2TPChangelogButton.kTextureHover   = PrecacheAsset("ui/b2tp_changelog_icon.dds")
 
 GUIB2TPChangelogButton.kShadowScale = Vector(10, 5, 1)
 
