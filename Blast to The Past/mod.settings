@@ -27,6 +27,7 @@ This mod aims to attack the causes of this, by doing the least amount of changes
 [*][b]Leap energy[/b] 45 -> 55
 [*][b]Boneshield HP[/b] 1000 -> 600 [i](1000 was balanced for 10v10)[/i]
 [*][b]Stomp energy[/b] 30 -> 45 [i](curbs stomp spam when the alien team has no adrenaline or a shift to sustain it)[/i]
+[*][b]Stomp[/b] (compmod change) now slows marines caught in it instead of knocking them down -- same slow as being webbed, tapering off over 5 seconds
 [/list]
 
 [h3]Fade[/h3]

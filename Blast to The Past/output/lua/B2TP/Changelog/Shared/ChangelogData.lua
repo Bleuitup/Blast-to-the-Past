@@ -51,6 +51,7 @@ local kChangelogLines =
     "### Onos",
     "  - Boneshield HP reduced from 1000 to 600 (1000 was balanced for 10v10).",
     "  - Stomp energy cost increased from 30 to 45, to curb stomp spam when the alien team has no adrenaline or a shift to sustain it.",
+    "  - Stomp (compmod change) now slows marines caught in it instead of knocking them down. Same slow as being webbed, tapering off over 5 seconds.",
     "",
     "### Upgrades",
     "  - Aura no longer reveals enemy health.",
