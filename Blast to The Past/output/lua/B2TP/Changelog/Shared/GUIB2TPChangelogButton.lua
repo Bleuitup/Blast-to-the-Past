@@ -2,9 +2,11 @@
 -- buttons in the corner of the main menu -- no server connection or map load needed to see it,
 -- so this is the cheapest thing in the whole mod to test: launch the mod and look at the menu.
 --
--- PLACEHOLDER ICON: a plain white 160x160 square (ui/b2tp_changelog_icon.dds), same format as
--- vanilla's own menu link buttons (uncompressed RGBA, 8 mipmaps). Swap the file for real art
--- later; nothing else in this file needs to change to do that.
+-- Icon is the mod's own 8v8 logo (ui/b2tp_changelog_icon.dds), letterboxed onto a transparent
+-- 160x160 canvas. Same format as vanilla's own menu link buttons (uncompressed RGBA, 8 mipmaps),
+-- converted from the source PNG with the nvcompress.exe that ships in the game's own utils
+-- folder. Was briefly swapped for a plain white square while chasing an unrelated script-load
+-- crash, to rule out the icon as a variable; restored now that the real bug is fixed.
 --
 -- Regular and hover use the same texture. GUIMenuPowerButton draws the hover graphic as a
 -- second layer that fades in over the normal one, so an identical texture still reads as a

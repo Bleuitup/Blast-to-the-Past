@@ -57,13 +57,22 @@ GUIB2TPChangelogWindow:AddClassProperty("IsOpen", false)
 -- renders as 2300x1600 real screen pixels -- far larger than the window on anything under 4K.
 local kMockupRes = Vector(3840, 2160, 0)
 
--- Pushes the window down clear of the top nav bar. CBM's original had this same idea
--- (SetY(900)) but as a flat unscaled number; a previous version of this file dropped it
--- entirely on the theory that AlignCenter() alone was enough, but centering on the FULL screen
--- height puts the window's top edge up behind the nav bar strip, hiding the first line of
--- content. Restored here, scaled the same way position offsets are scaled elsewhere in this
--- framework (see kTopRightButtonPosition * scale in GUIMainMenu.lua).
-local kYOffset = 900
+-- Pushes the window down clear of the top nav bar, without pushing it so far down that the
+-- bottom runs into the nav bar's own newsFeed pullout tab strip anchored at the screen bottom
+-- (GUIMenuNavBar.kNewsFeedSize).
+--
+-- 900, copied from CBM's SetY(900), overshot badly: cleared the top fine but pushed the bottom
+-- behind that tab strip. GUIMenuNavBar.topEdge (271) was considered instead, but it's measured
+-- in the nav bar's own coordinate space -- almost certainly top-anchored, Y=0 at the screen's
+-- top edge -- while this window is center-anchored via AlignCenter(), Y=0 at screen centre.
+-- Those are not the same space, so 271 here is not necessarily equivalent and risks undershooting
+-- back into the original bug (title hidden entirely).
+--
+-- 450 is a deliberate middle value between the two known data points (0 undershoots, 900
+-- overshoots), not a derived one -- there is no way to render this GUI framework outside the
+-- actual game to compute the correct number directly. Paired with a shorter SetSize below so a
+-- misjudged offset in either direction has more margin to still clear both edges.
+local kYOffset = 450
 
 local function UpdateResolutionScaling(self, newX, newY)
     local res = Vector(newX, newY, 0)
@@ -105,7 +114,10 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:HookEvent(self.tabButton, "OnTabSizeChanged", self.SetTabSize)
     self:SetTabSize(self.tabButton:GetTabSize())
 
-    self:SetSize(2300, 1600)
+    -- Height cut from CBM's original 1600 to 1150 so the box has real margin at both the top
+    -- (nav bar) and bottom (newsFeed tab strip) instead of nearly spanning the full screen
+    -- height, which left almost no slack for kYOffset to be even slightly wrong.
+    self:SetSize(2300, 1150)
     self:Close()
 
     self:LoadChangelog(GetB2TPChangelogText())
