@@ -31,7 +31,7 @@ This mod aims to attack the causes of this, by doing the least amount of changes
 
 [h3]Fade[/h3]
 [list]
-[*][b]Advanced Swipe[/b] new at Bio8 -- +8% swipe damage, 30 Tres, 90 second research
+[*][b]Advanced Swipe[/b] new at Biomass 8 -- +8% swipe damage, 30 Tres, 90 second research. This will kill a marine on armor 2 in three swipes. Countered by armor 3
 [*][b]Stab energy[/b] 30 -> 25
 [*][b]Stab research[/b] 25 -> 20 Tres
 [/list]
@@ -102,7 +102,7 @@ This serves as an interpolation between 1IP and no bonuses for 6v6 (vanilla beha
 [/list]
 
 [h3]Medpack Tech[/h3]
-Marines get Medpack Tech #1 and #2 from S13 compmod:
+Marines get Medpack Tech #1 and #2, ported from ENSL CompMod seasons 13 and 14:
 [list]
 [*][b]Default[/b] heal 25/25, identical to vanilla
 [*][b]Medtech #1[/b] unlocks in the command station, requires armory. Heal 30/20
