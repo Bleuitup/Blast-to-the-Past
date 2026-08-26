@@ -19,7 +19,7 @@ description = [=[mod id 3426836832
 
 [h2]Gorge[/h2]
 [list]
-[*][b]Gorges can drop tunnels themselves[/b] 5 Pres per end [i](adapted from CompMod, whose own drop cost is 4)[/i], but only into a room whose power node is down, or onto infestation. They come up fully mature and spread infestation immediately
+[*][b]Gorges can drop tunnels themselves[/b] 5 Pres per entrance [i](adapted from CompMod, whose own drop cost is 4)[/i], but only into a room with no working power node [i](unbuilt, destroyed or damaged)[/i], or onto infestation. They come up fully mature and spread infestation immediately
 [/list]
 
 [h2]Lerk[/h2]
@@ -48,11 +48,11 @@ description = [=[mod id 3426836832
 [/list]
 
 [h2]Chamber hive passives[/h2]
-Inspired by the CBM changes, but conditioned to be available only if the upgraded Hive remains alive.
+Inspired by the CBM changes, but conditioned to be available only while the matching Hive is still alive.
 [list]
-[*][b]Shells[/b] regenerate themselves out of combat as long as you have a Crag hive
-[*][b]Veils[/b] cloak themselves out of combat as long as you have a Shade hive
-[*][b]Spurs[/b] can be picked up and moved by the commander as long as you have a Shift hive
+[*][b]Shells[/b] regenerate themselves out of combat as long as the aliens have a Crag hive
+[*][b]Veils[/b] cloak themselves out of combat as long as the aliens have a Shade hive
+[*][b]Spurs[/b] can be picked up and moved by the commander as long as the aliens have a Shift hive
 [/list]
 
 [h2]Cysts[/h2]

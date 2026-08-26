@@ -5,6 +5,10 @@
 --
 -- A plain, always-available reference window: no "seen this version" tracking, no attention
 -- animation on the button. Open it whenever you want to check what the mod changes.
+--
+-- The changelog is available in English, Portuguese and Spanish, picked with the flag buttons in
+-- the top right. Those buttons are children of the window itself rather than of the scroll pane,
+-- so they stay put in the header band and can never be scrolled out of view.
 
 Script.Load("lua/GUI/GUIObject.lua")
 Script.Load("lua/menu2/GUIMenuTabbedBox.lua")
@@ -12,6 +16,8 @@ Script.Load("lua/menu2/widgets/GUIMenuTabButtonWidget.lua")
 Script.Load("lua/menu2/widgets/GUIMenuScrollPane.lua")
 Script.Load("lua/GUI/GUIText.lua")
 Script.Load("lua/GUI/GUIParagraph.lua")
+Script.Load("lua/GUI/widgets/GUIButton.lua")
+Script.Load("lua/GUI/layouts/GUIListLayout.lua")
 Script.Load("lua/menu2/MenuStyles.lua")
 
 Script.Load("lua/B2TP/Changelog/Shared/ChangelogData.lua")
@@ -56,6 +62,30 @@ GUIB2TPChangelogWindow:AddClassProperty("IsOpen", false)
 local kWindowSize = Vector(2300, 1600, 0)
 local kYOffset = 900
 
+-- Language buttons. All values are in the same 3840x2160 mockup space as kWindowSize above.
+--
+-- The band between the top of the window and the top of the inner content box is
+-- kInnerBackgroundTopSpacing - kUnderlapYSize = 99 tall, and the title sits centred in it. These
+-- flags are anchored to the top RIGHT of the window and sized to sit inside that band, so they
+-- share the header strip with the title without overlapping it or the content box below.
+local kFlagSize = Vector(132, 66, 0)
+local kFlagSpacing = 16
+local kFlagBarRightMargin = 48
+local kFlagBarY = 17
+
+-- Placeholder artwork, generated to match the format of the mod's existing changelog icon
+-- (uncompressed 32-bit BGRA with a full mip chain). Swap in real flags by replacing these files.
+local kLanguageButtons =
+{
+    { language = "en", texture = PrecacheAsset("ui/b2tp_flag_en.dds") },
+    { language = "pt", texture = PrecacheAsset("ui/b2tp_flag_pt.dds") },
+    { language = "es", texture = PrecacheAsset("ui/b2tp_flag_es.dds") },
+}
+
+local kFlagColorSelected = Color(1, 1, 1, 1)
+local kFlagColorHover = Color(0.8, 0.8, 0.8, 1)
+local kFlagColorIdle = Color(0.42, 0.42, 0.42, 1)
+
 function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     errorDepth = (errorDepth or 1) + 1
 
@@ -74,6 +104,7 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self.title:SetY(-23)
 
     self:InitializeContentHolders()
+    self:InitializeLanguageBar()
 
     self.tabButton = CreateGUIObject("tabButton", GUIMenuTabButtonWidget, self)
     self.tabButton:SetTabHeight(kTabHeight)
@@ -89,7 +120,86 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:SetY(kYOffset)
     self:Close()
 
-    self:LoadChangelog(GetB2TPChangelogText())
+    -- Follow the game's own language setting, falling back to English for every locale we don't
+    -- have a translation for. Set directly rather than through SetChangelogLanguage, since there
+    -- is no previous text to tear down and nothing to scroll back to yet.
+    self.language = GetB2TPDefaultChangelogLanguage()
+    self:LoadChangelog(GetB2TPChangelogText(self.language))
+    self:UpdateLanguageButtons()
+
+end
+
+function GUIB2TPChangelogWindow:InitializeLanguageBar()
+
+    self.languageButtons = {}
+
+    self.languageBar = CreateGUIObject("languageBar", GUIListLayout, self,
+    {
+        orientation = "horizontal",
+        spacing = kFlagSpacing,
+    })
+    self.languageBar:AlignTopRight()
+    self.languageBar:SetPosition(-kFlagBarRightMargin, kFlagBarY)
+
+    for i = 1, #kLanguageButtons do
+
+        local entry = kLanguageButtons[i]
+
+        local button = CreateGUIObject("languageButton_" .. entry.language, GUIButton, self.languageBar)
+        button:SetTexture(entry.texture)
+        button:SetSize(kFlagSize)
+        button:SetColor(kFlagColorIdle)
+        button.b2tpLanguage = entry.language
+
+        -- Closures rather than a shared method: the event only passes the receiver, not the
+        -- sender, so there would otherwise be no way to tell the three buttons apart.
+        self:HookEvent(button, "OnPressed", function()
+            self:SetChangelogLanguage(entry.language)
+        end)
+
+        self:HookEvent(button, "OnMouseOverChanged", function()
+            self:UpdateLanguageButtons()
+        end)
+
+        table.insert(self.languageButtons, button)
+
+    end
+
+end
+
+-- Selected flag is drawn at full brightness, the others dimmed, brightening on mouse-over. Uses
+-- colour rather than a second texture per flag so the placeholder art stays a single file each.
+function GUIB2TPChangelogWindow:UpdateLanguageButtons()
+
+    if not self.languageButtons then return end
+
+    for i = 1, #self.languageButtons do
+
+        local button = self.languageButtons[i]
+
+        if button.b2tpLanguage == self.language then
+            button:SetColor(kFlagColorSelected)
+        elseif button:GetMouseOver() then
+            button:SetColor(kFlagColorHover)
+        else
+            button:SetColor(kFlagColorIdle)
+        end
+
+    end
+
+end
+
+function GUIB2TPChangelogWindow:SetChangelogLanguage(language)
+
+    if language == self.language then return end
+
+    self.language = language
+    self:LoadChangelog(GetB2TPChangelogText(language))
+    self:UpdateLanguageButtons()
+
+    -- The languages are different lengths, so whatever the reader was scrolled to means nothing
+    -- in the new text. Send them back to the top rather than somewhere arbitrary.
+    self.scrollPane:ScrollToLocation(0, 0)
 
 end
 
