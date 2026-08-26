@@ -45,44 +45,16 @@ class "GUIB2TPChangelogWindow" (baseClass)
 
 GUIB2TPChangelogWindow:AddClassProperty("IsOpen", false)
 
--- The whole menu is authored against a 3840x2160 canvas and scaled down to the real screen
--- resolution. Every top-level menu widget applies this scale to itself -- GUIMainMenu's own
--- corner/link buttons do it in their layoutButtons closure, and GUIMenuNavBar does the identical
--- calculation in its UpdateResolutionScaling. It is NOT inherited automatically from a parent;
--- each object is responsible for calling SetScale on itself.
+-- Size and vertical offset are CBM's own values (GUIBetaBalanceChangelog.lua), and are in the
+-- 3840x2160 mockup coordinate space the whole menu is authored against -- NOT real screen pixels.
 --
--- This window is created with parent = nil (see GUIB2TPChangelogButton.lua), so it never picks up
--- this scale from an ancestor and must compute and apply it directly, or SetSize(2300, 1600) below
--- renders as 2300x1600 real screen pixels -- far larger than the window on anything under 4K.
-local kMockupRes = Vector(3840, 2160, 0)
-
--- Pushes the window down clear of the top nav bar, without pushing it so far down that the
--- bottom (the CLOSE tab) runs into the nav bar's own newsFeed pullout tab strip anchored at the
--- screen bottom (GUIMenuNavBar.kNewsFeedSize).
---
--- History, since there is no way to render this GUI framework outside the actual game to compute
--- the correct number directly -- every value here comes from a screenshot, not a derivation:
---   0   : title and first content line hidden entirely behind the top nav bar.
---   900 : copied from CBM's SetY(900). Cleared the top with room to spare, but overshot at the
---         bottom -- the CLOSE tab ran into the newsFeed strip.
---   450 : first correction. Cleared the bottom mostly, but the CLOSE tab was still slightly
---         clipped, and the screenshot showed a large unused gap above the title -- room to
---         still go further up.
---   300 : trimmed further based on that gap. The bottom edge (kYOffset + height/2 = 800) was
---         confirmed good at this point -- the request became "keep where it ends, grow upward."
---   150 : current value. Paired with a taller SetSize below (1000 -> 1300) chosen specifically
---         to keep kYOffset + height/2 == 800, so the bottom edge and the CLOSE tab stay exactly
---         where they already tested fine, while the top edge moves up by the same 300 the
---         height grew by.
-local kYOffset = 150
-
-local function UpdateResolutionScaling(self, newX, newY)
-    local res = Vector(newX, newY, 0)
-    local scale = res / kMockupRes
-    scale = math.min(scale.x, scale.y)
-    self:SetScale(scale, scale)
-    self:SetY(kYOffset * scale)
-end
+-- This window does NOT scale itself. GUIB2TPChangelogButton reparents it onto the nav bar (see
+-- the layering note there), and it inherits the nav bar's resolution scale from that parent, the
+-- same way CBM's changelog does. An earlier version computed and applied its own scale, which was
+-- correct back when the window was parented to nil -- but once reparented that scale multiplies
+-- with the inherited one and the window renders roughly a third of its intended size.
+local kWindowSize = Vector(2300, 1600, 0)
+local kYOffset = 900
 
 function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     errorDepth = (errorDepth or 1) + 1
@@ -93,9 +65,6 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
 
     self:AlignCenter()
     self:SetLayer(999)
-
-    UpdateResolutionScaling(self, Client.GetScreenWidth(), Client.GetScreenHeight())
-    self:HookEvent(GetGlobalEventDispatcher(), "OnResolutionChanged", UpdateResolutionScaling)
 
     self.title = CreateGUIObject("title", GUIText, self)
     self.title:SetFont(kTitleFont)
@@ -116,11 +85,8 @@ function GUIB2TPChangelogWindow:Initialize(params, errorDepth)
     self:HookEvent(self.tabButton, "OnTabSizeChanged", self.SetTabSize)
     self:SetTabSize(self.tabButton:GetTabSize())
 
-    -- Height: 1600 (CBM) -> 1150 -> 1000 -> 1300 (current), the last change paired with
-    -- kYOffset above dropping by exactly half the height increase (300 -> 150), so the bottom
-    -- edge stays fixed at the position already confirmed to clear the newsFeed strip, and only
-    -- the top edge moves up, making the box taller without touching what already worked.
-    self:SetSize(2300, 1300)
+    self:SetSize(kWindowSize.x, kWindowSize.y)
+    self:SetY(kYOffset)
     self:Close()
 
     self:LoadChangelog(GetB2TPChangelogText())

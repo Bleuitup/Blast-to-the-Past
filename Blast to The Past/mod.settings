@@ -5,104 +5,108 @@ description = [=[mod id 3426836832
 
 [h1]Blast to the Past (B2TP)[/h1]
 
-A vanilla-flavored Natural Selection 2 mod aimed balancing the game 6v6 to 8v8 conditions, the original intended size of public play of ns2, back to the time where 8v8 servers were commonplace.
-
-While stats on ns2panel.com show an almost 50-50 winrate (which is a good thing), in our experience most players have a higher marine than alien hiveskill, a rare 5 sight years ago.
-
-As a consequence, the hive skill system, using the per-team-hiveskills feature that didn't exist back them can simply solve these imbalances by slightly stacking the alien team with better players. This, in turn, creates a 50-50 winrate.
-However, if teams were to be sweapped then it would be expected the stronger,team would crush the opposition.
-
-In conclusion, while the game can be 'balanced' for single rounds, it's not truly balanced until a 50-50-ish winrate is achieved after teamswaps.
-
-This mod aims to attack the causes of this, by doing the least amount of changes whenever possible in the most impactful places. Most of these changes revert some values to what were vanilla values years ago, or were present in older or present compmod versions.
+[b]TL;DR:[/b] a vanilla-flavored balance mod for 6v6-8v8 Natural Selection 2, the original size public servers ran at. Most changes either tweak some values or mechanics to what vanilla used to run years ago, or incorporate changes from CompMod or good ideas from CBM, with the goal of improving skill expression while still remaining valuable for a managed, coordinated public server experience.
 
 [hr][/hr]
 
 [h1]ALIENS[/h1]
 
-[h3]Lifeforms[/h3]
+[h2]Skulk[/h2]
 [list]
-[*][b]Lerk health[/b] 180 -> 170
-[*][b]Lerk spike damage[/b] 10 -> 11
-[*][b]Leap energy[/b] 45 -> 55
+[*][b]Leap energy[/b] 45 -> 55 [i](CompMod value)[/i]
+[*][b]Vampirism[/b] 4.66% -> 3.77% per shell [i](CompMod value)[/i]. Vampirism also works on Exos now
+[/list]
+
+[h2]Gorge[/h2]
+[list]
+[*][b]Gorges can drop tunnels themselves[/b] 5 Pres per end [i](adapted from CompMod, whose own drop cost is 4)[/i], but only into a room whose power node is down, or onto infestation. They come up fully mature and spread infestation immediately
+[/list]
+
+[h2]Lerk[/h2]
+[list]
+[*][b]Lerk health[/b] 180 -> 170 [i](CompMod value)[/i]
+[*][b]Lerk spike damage[/b] 5 -> 5.5 [i](interpolated from CompMod, whose own value is 6)[/i]
+[/list]
+
+[h2]Fade[/h2]
+[list]
+[*][b]Advanced Swipe[/b] new at Biomass 8 -- +8% swipe damage [i](CompMod's own damage scalar, exactly)[/i], 30 Tres, 90 second research [i](CompMod's own cost/research time are 25 Tres / 60s -- tuned for B2TP)[/i]. This will kill a marine on armor 2 in three swipes. Countered by armor 3
+[*][b]Stab energy[/b] 30 -> 25
+[*][b]Stab research[/b] 25 -> 20 Tres
+[/list]
+
+[h2]Onos[/h2]
+[list]
 [*][b]Boneshield HP[/b] 1000 -> 600 [i](1000 was balanced for 10v10)[/i]
 [*][b]Stomp energy[/b] 30 -> 45 [i](curbs stomp spam when the alien team has no adrenaline or a shift to sustain it)[/i]
 [*][b]Stomp[/b] (CBM change) now slows marines caught in it instead of knocking them down -- same slow as being webbed, tapering off over 5 seconds
 [/list]
 
-[h3]Fade[/h3]
+[h2]Upgrades[/h2]
 [list]
-[*][b]Advanced Swipe[/b] new at Biomass 8 -- +8% swipe damage, 30 Tres, 90 second research. This will kill a marine on armor 2 in three swipes. Countered by armor 3
-[*][b]Stab energy[/b] 30 -> 25
-[*][b]Stab research[/b] 25 -> 20 Tres
-[/list]
-
-[h3]Upgrades[/h3]
-[list]
-[*][b]Skulk Vampirism[/b] 4.66% -> 3.77% per shell [i](compmod change)[/i]. Vampirism also works on Exos now
 [*][b]Aura[/b] no longer reveals health
 [/list]
 
-[h3]Chamber hive passives[/h3]
-Chambers get their hive passives back:
+[h2]Chamber hive passives[/h2]
+Inspired by the CBM changes, but conditioned to be available only if the upgraded Hive remains alive.
 [list]
-[*][b]Shells[/b] regenerate themselves out of combat with a Crag hive
-[*][b]Veils[/b] cloak themselves out of combat with a Shade hive
-[*][b]Spurs[/b] can be picked up and moved by the commander with a Shift hive
+[*][b]Shells[/b] regenerate themselves out of combat as long as you have a Crag hive
+[*][b]Veils[/b] cloak themselves out of combat as long as you have a Shade hive
+[*][b]Spurs[/b] can be picked up and moved by the commander as long as you have a Shift hive
 [/list]
 
-[h3]Cysts[/h3]
+[h2]Cysts[/h2]
 [list]
-[*][b]Build time[/b] 3.33 -> 6 seconds
-[*][b]Shift hive build multiplier[/b] x1.25 -> x1.5 [i](compmod change, since vanilla cysting is broken in normal player counts)[/i]
-[*][b]Flame damage[/b] split by source [i](compmod change)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
+[*][b]Build time[/b] 3.33 -> 6 seconds [i](CompMod value)[/i]
+[*][b]Shift hive build multiplier[/b] x1.25 -> x1.5 [i](CompMod value)[/i], since vanilla cysting is broken in normal player counts
+[*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
 [*][b]Mature cyst health[/b] 400 -> 300
-[*][b]Detection range[/b] 8m -> 10m
+[*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
 [*][b]Drifters[/b] ordered onto an unbuilt cyst now queue up the whole chain behind it, instead of one cyst at a time
 [/list]
 
-[h3]Tunnels[/h3]
+[h2]Tunnels[/h2]
 [list]
-[*][b]Gorges can drop tunnels[/b] 5 Pres per end, but only into a room whose power node is down, or onto infestation. They come up fully mature and spread infestation immediately
-[*][b]Relocating[/b] 6 -> 5 Tres
+[*][b]Relocating[/b] 6 -> 5 Tres [i](CompMod value)[/i]
 [*][b]Minimap[/b] tunnel entrances are now labelled Entry 1-4 and Exit 1-4 on the map
 [/list]
 
-[h3]Hallucinations[/h3]
+[h2]Hallucinations[/h2]
 [list]
-[*][b]Biomass health[/b] removed -- hallucinations no longer get tougher as biomass rises
-[*][b]Abilities[/b] can no longer use Umbra, Spores or Stomp
+[*][b]Biomass health[/b] removed -- hallucinations no longer get tougher as biomass rises [i](CompMod change)[/i]
+[*][b]Abilities[/b] hallucinated Lerks can no longer use Umbra or Spores [i](CompMod change)[/i]; hallucinated Onos can no longer Stomp [i](B2TP's own extension of the same idea)[/i]
 [/list]
 
 [hr][/hr]
 
 [h1]MARINES[/h1]
 
-[h3]Round start[/h3]
+[h2]Round start[/h2]
 Marines start with 1 IP (vanilla!) but
 [list]
 [*][b]7v7[/b] +5 Tres
 [*][b]8v8[/b] +10 Tres
 [/list]
-This serves as an interpolation between 1IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10, which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 ammounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
+This serves as an interpolation between 1 IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10, which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 amounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
 
-[h3]Structures and units[/h3]
+[h2]Structures and units[/h2]
 [list]
-[*][b]ARC health[/b] 2600 hp / 400 armor -> 2100 hp / 500 armor, limited to 4
-[*][b]MAC speed[/b] +15% out of combat
-[*][b]MAC rollout speed[/b] 2 -> 5
-[*][b]Sentry[/b] 5 -> 6 Tres
-[*][b]Sentry Battery[/b] 10 -> 12 Tres
+[*][b]ARC health[/b] 2600 -> 2100 [i](interpolated -- CompMod's own value is 1800)[/i]
+[*][b]ARC armor[/b] 400 -> 500 [i](CompMod value)[/i], limited to 4 [i](CompMod value)[/i]
+[*][b]MAC speed[/b] +15% out of combat [i](CompMod value)[/i]
+[*][b]MAC rollout speed[/b] 2 -> 5 [i](CBM fix)[/i]
+[*][b]Sentry[/b] 5 -> 6 Tres [i](CompMod value)[/i]
+[*][b]Sentry Battery[/b] 10 -> 12 Tres [i](CompMod value)[/i]
 [/list]
 
-[h3]Drops[/h3]
+[h2]Drops[/h2]
 [list]
 [*][b]Welder drop[/b] 3 -> 2 Tres
 [*][b]Mine drop[/b] 7 -> 5 Tres
 [*][b]Dropped weapon stay time[/b] 16 -> 20 seconds
 [/list]
 
-[h3]Medpack Tech[/h3]
+[h2]Medpack Tech[/h2]
 Marines get Medpack Tech #1 and #2, ported from ENSL CompMod seasons 13 and 14:
 [list]
 [*][b]Default[/b] heal 25/25, identical to vanilla
@@ -111,13 +115,23 @@ Marines get Medpack Tech #1 and #2, ported from ENSL CompMod seasons 13 and 14:
 [/list]
 This makes medding scale as the round progresses, since vanilla meds are truly lacking in the end game.
 
-[h3]Weapons[/h3]
+[h2]Weapons[/h2]
 [list]
 [*][b]Weapon upgrade scaling[/b] 7.84% (?!) -> 10% per level, for all weapons including shotgun, FT and GL [i](a W3 shotgun meatshot goes from 210 to 221 damage)[/i]
 [*][b]Shotgun falloff start[/b] 5m -> 7.5m
-[*][b]Shotgun falloff end[/b] 15m -> 17.5m [i](where it does 50% damage)[/i]
+[*][b]Shotgun falloff end[/b] 15m -> 17.5m
 [/list]
-The shotgun change is half of the compmod change. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA.]=]
+The shotgun change is half of the CompMod change (CompMod moves falloff to 10m/20m; B2TP splits the difference with vanilla's 5m/15m). The 50% damage floor past the falloff-end range is unchanged vanilla/CompMod behavior -- only where the falloff starts and ends has moved. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA.
+
+[hr][/hr]
+
+[h1]Credits[/h1]
+
+[b]Author:[/b] Bleu
+
+[b]Developed for:[/b] the NS2 Sudamerica community. Join us at [url=https://discord.gg/NS2-Sudamerica]discord.gg/NS2-Sudamerica[/url].
+
+Several changes here are ported or adapted from ENSL CompMod / CBM, with permission from their respective authors.]=]
 image       = "preview.jpg"
 tag_modtype = "Gameplay Tweak"
 tag_support = "Must be run on Server"

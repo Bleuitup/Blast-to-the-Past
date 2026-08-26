@@ -40,6 +40,24 @@ function GUIB2TPChangelogButton:Initialize(params, errorDepth)
     self.changelog = CreateGUIObject("b2tpChangelog", GUIB2TPChangelogWindow, nil)
     self:HookEvent(GetMainMenu(), "OnClosed", self.OnMainMenuClosed)
 
+    -- Left parented to nil, this window only ever draws above whatever shares its own parent's
+    -- stacking layer (self.linkButtonsHolder, a low-level corner container) -- overlays like the
+    -- server browser live on separate, higher root layers and cover it, forcing them closed first.
+    -- CBM's own changelog button avoids this by reparenting onto the top nav bar once it exists
+    -- (GetNavBar() isn't available yet at link-button creation time, hence the poll), since the
+    -- nav bar's root sits above those overlays. Mirrors that fix here.
+    self.callback = self:AddTimedCallback(self.NavBarPollCallback, 0.5, true)
+
+end
+
+function GUIB2TPChangelogButton:NavBarPollCallback()
+    local navBar = GetNavBar()
+    if not navBar then return end
+
+    self.changelog:SetParent(navBar)
+
+    self:RemoveTimedCallback(self.callback)
+    self.callback = nil
 end
 
 function GUIB2TPChangelogButton:OnMainMenuClosed()
