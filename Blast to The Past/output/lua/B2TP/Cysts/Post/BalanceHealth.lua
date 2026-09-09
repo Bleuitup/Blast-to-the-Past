@@ -1,2 +1,2 @@
 -- Alien structures
-kMatureCystHealth = 300
+kMatureCystHealth = 350
