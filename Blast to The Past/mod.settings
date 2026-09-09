@@ -26,6 +26,7 @@ description = [=[mod id 3426836832
 [list]
 [*][b]Lerk health[/b] 180 -> 170 [i](CompMod value)[/i]
 [*][b]Lerk spike damage[/b] 5 -> 5.5 [i](interpolated from CompMod, whose own value is 6)[/i]
+[*][b]Lerk air friction[/b] now scales with time since the last flap [i](CompMod change)[/i]: vanilla 0.08 for the first 0.75 seconds, then climbing to 0.5 over the next 3.25 seconds. Flapping normally is unaffected, only long sustained glides bleed speed
 [/list]
 
 [h2]Fade[/h2]
@@ -122,6 +123,17 @@ This makes medding scale as the round progresses, since vanilla meds are truly l
 [*][b]Shotgun falloff end[/b] 15m -> 17.5m
 [/list]
 The shotgun change is half of the CompMod change (CompMod moves falloff to 10m/20m; B2TP splits the difference with vanilla's 5m/15m). The 50% damage floor past the falloff-end range is unchanged vanilla/CompMod behavior -- only where the falloff starts and ends has moved. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA.
+
+[hr][/hr]
+
+[h1]VANILLA FIXES[/h1]
+
+Bugs in the base game that this mod repairs. None of these are balance changes.
+[list]
+[*][b]HUD timers[/b] cat pack, nano shield and parasite bars no longer refill after the effect runs out. Vanilla wrapped the remaining time in an absolute value, so once it went negative the bar counted back up instead of staying empty
+[*][b]Babbler shields[/b] no longer give hitsounds and damage numbers to teammates [i](CompMod fix)[/i]. Vanilla reported the absorbed damage without checking whether the attacker was actually an enemy
+[*][b]Female sprint sounds[/b] no longer swapped. Vanilla has the sprint start and tired-end sounds pointing at each other's files
+[/list]
 
 [hr][/hr]
 
