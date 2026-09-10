@@ -1,6 +1,6 @@
 -- TEMPORARY load-order diagnostic for the CBM integration. Delete before release.
 --
--- The whole integration rests on one unverified assumption: that B2TP's Post hooks run AFTER CBM's
+-- The whole integration rests on one assumption: that B2TP's Post hooks run AFTER CBM's
 -- replacement files, so B2TP's constants win. Reading a constant at hook time would only prove when
 -- B2TP ran, not who ended up last, so this registers a console command that reads the live globals
 -- at runtime instead, long after every load-time hook has finished.
@@ -11,15 +11,17 @@ local function Report()
 
     local rows =
     {
-        -- name,                  B2TP wants,  CBM value
-        { "kLeapEnergyCost",       55,   45,   kLeapEnergyCost },
-        { "kSentryCost",           6,    9,    kSentryCost },
-        { "kMatureCystHealth",     350,  450,  kMatureCystHealth },
-        { "kBoneShieldHitpoints",  600,  1000, kBoneShieldHitpoints },
-        { "kARCHealth",            2100, 2600, kARCHealth },
-        { "kMaxARCs",              4,    5,    kMaxARCs },
-        { "kCystBuildTime",        6,    3.33, kCystBuildTime },
-        { "kLerkHealth",           170,  180,  kLerkHealth },
+        -- name,                                  B2TP wants,  CBM value
+        { "kLeapEnergyCost",                       55,   45,     kLeapEnergyCost },
+        { "kSentryCost",                           6,    9,      kSentryCost },
+        { "kMatureCystHealth",                     350,  450,    kMatureCystHealth },
+        { "kBoneShieldHitpoints",                  600,  1000,   kBoneShieldHitpoints },
+        { "kARCHealth",                            2100, 2600,   kARCHealth },
+        { "kMaxARCs",                              4,    5,      kMaxARCs },
+        { "kCystBuildTime",                        6,    3.33,   kCystBuildTime },
+        { "kLerkHealth",                           170,  180,    kLerkHealth },
+        { "kShotgunWeapons3DamageScalar",          1.3,  1.2352, kShotgunWeapons3DamageScalar },
+        { "kShotgunWeapons3DamageScalarStructure", 1.6,  1.4704, kShotgunWeapons3DamageScalarStructure },
     }
 
     Shared.Message("=== B2TP load-order check ===")
@@ -45,13 +47,13 @@ local function Report()
             neither = neither + 1
         end
 
-        Shared.Message(string.format("  %-24s live=%-8s b2tp=%-8s cbm=%-8s -> %s",
+        Shared.Message(string.format("  %-38s live=%-8s b2tp=%-8s cbm=%-8s -> %s",
             name, tostring(actual), tostring(want), tostring(cbm), verdict))
 
     end
 
     -- Core Toggle sets this false; CBM sets it true. Confirms the toggle is actually loaded.
-    Shared.Message(string.format("  %-24s live=%s (Core Toggle ON means false)",
+    Shared.Message(string.format("  %-38s live=%s (Core Toggle ON means false)",
         "kCBMaddon", tostring(kCBMaddon)))
 
     Shared.Message(string.format("=== B2TP:%d  CBM:%d  other:%d ===", b2tpWins, cbmWins, neither))
