@@ -1,36 +1,7 @@
-TeamInfo.kRelevantTechIdsAlien = {
-    kTechId.CragHive,
-    kTechId.UpgradeToCragHive,
-    kTechId.Shell,
-    kTechId.TwoShells,
-    kTechId.ThreeShells,
-
-    kTechId.ShadeHive,
-    kTechId.UpgradeToShadeHive,
-    kTechId.Veil,
-    kTechId.TwoVeils,
-    kTechId.ThreeVeils,
-
-    kTechId.ShiftHive,
-    kTechId.UpgradeToShiftHive,
-    kTechId.Spur,
-    kTechId.TwoSpurs,
-    kTechId.ThreeSpurs,
-
-    kTechId.ResearchBioMassOne,
-    kTechId.ResearchBioMassTwo,
-    kTechId.ResearchBioMassThree,
-
-    kTechId.Leap,
-    kTechId.Xenocide,
-    kTechId.BileBomb,
-    kTechId.WebTech,
-    kTechId.Umbra,
-    kTechId.Spores,
-    kTechId.MetabolizeEnergy,
-    kTechId.MetabolizeHealth,
-	kTechId.Stab,
-    kTechId.AdvancedSwipe,
-    kTechId.BoneShield,
-    kTechId.Stomp,
-}
+-- Add Advanced Swipe to the alien research list (the techs whose research state is networked to
+-- clients, e.g. for the tech map). Append only: replacing the list would drop every entry CBM adds.
+-- The vanilla-era version of this file swapped Charge out to fit vanilla's 32-bit mask; CBM's
+-- 64-bit mask allows up to 62 entries and CBM uses 40, so nothing needs to give way.
+if not table.icontains(TeamInfo.kRelevantTechIdsAlien, kTechId.AdvancedSwipe) then
+    table.insert(TeamInfo.kRelevantTechIdsAlien, kTechId.AdvancedSwipe)
+end
