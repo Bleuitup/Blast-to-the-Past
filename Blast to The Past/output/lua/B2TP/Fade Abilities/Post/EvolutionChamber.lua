@@ -1,16 +1,13 @@
-EvolutionChamber.kUpgradeButtons ={                            
-    [kTechId.SkulkMenu] = { kTechId.Leap, kTechId.Xenocide, kTechId.None, kTechId.None,
-                                kTechId.None, kTechId.None, kTechId.None, kTechId.None },
-                             
-    [kTechId.GorgeMenu] = { kTechId.BileBomb, kTechId.WebTech, kTechId.None, kTechId.None,
-                                 kTechId.None, kTechId.None, kTechId.None, kTechId.None },
-                                 
-    [kTechId.LerkMenu] = { kTechId.Umbra, kTechId.Spores, kTechId.None, kTechId.None,
-                                 kTechId.None, kTechId.None, kTechId.None, kTechId.None },
-                                 
-    [kTechId.FadeMenu] = { kTechId.MetabolizeEnergy, kTechId.MetabolizeHealth, kTechId.Stab, kTechId.AdvancedSwipe,
-                           kTechId.None, kTechId.None, kTechId.None, kTechId.None },
+-- Add Advanced Swipe to the Fade upgrade menu, in the first empty slot (slot 4 in both vanilla and
+-- CBM). Only this one entry is touched: replacing the whole kUpgradeButtons table would silently
+-- undo whatever CBM puts in the other lifeform menus (e.g. its Babbler Bomb on the Gorge menu).
+local fadeButtons = EvolutionChamber.kUpgradeButtons[kTechId.FadeMenu]
 
-    [kTechId.OnosMenu] = { kTechId.BoneShield, kTechId.Stomp, kTechId.None,
-                           kTechId.None, kTechId.None, kTechId.None, kTechId.None }
-}
+if fadeButtons and not table.icontains(fadeButtons, kTechId.AdvancedSwipe) then
+    for i = 1, #fadeButtons do
+        if fadeButtons[i] == kTechId.None then
+            fadeButtons[i] = kTechId.AdvancedSwipe
+            break
+        end
+    end
+end
