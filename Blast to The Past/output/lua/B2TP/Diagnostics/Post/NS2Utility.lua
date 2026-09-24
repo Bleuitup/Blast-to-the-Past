@@ -11,10 +11,9 @@ local function Report()
 
     local rows =
     {
-        -- name,                                  B2TP wants,  CBM value
+        -- name,                                  B2TP wants,  CBM 3.5 value
         { "kLeapEnergyCost",                       55,   45,     kLeapEnergyCost },
-        { "kSentryCost",                           6,    9,      kSentryCost },
-        { "kMatureCystHealth",                     350,  450,    kMatureCystHealth },
+        { "kCragCost",                             10,   8,      kCragCost },
         { "kBoneShieldHitpoints",                  600,  1000,   kBoneShieldHitpoints },
         { "kARCHealth",                            2100, 2600,   kARCHealth },
         { "kMaxARCs",                              4,    5,      kMaxARCs },
