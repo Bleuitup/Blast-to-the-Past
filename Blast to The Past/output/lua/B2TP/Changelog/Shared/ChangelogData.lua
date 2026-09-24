@@ -46,7 +46,8 @@ local kChangelogs = {}
 
 kChangelogs.en =
 {
-    "Blast to the Past, built on top of the Community Balance Mod with the CBM Core Toggle on. Everything CBM changes still applies; this list is only what B2TP changes on top of it. The aim is unchanged: tune NS2 for 6v6-8v8, the original size public servers ran at. Most changes either return values or mechanics to what vanilla used to run years ago, or come from ENSL CompMod, to improve skill expression while staying suited to a managed, coordinated public server.",
+    "Blast to the Past, built on top of the Community Balance Mod with the CBM Core Toggle on. Everything CBM changes still applies; this list is only what B2TP changes on top of it.",
+    "The aim is unchanged: tune NS2 for 6v6-8v8, the original size public servers ran at. Most changes either return values or mechanics to what vanilla used to run years ago, or come from ENSL CompMod, to improve skill expression while staying suited to a managed, coordinated public server.",
     "",
     "# ALIENS",
     "",
@@ -84,11 +85,6 @@ kChangelogs.en =
     "  - Tunnel relocate cost reduced from 6 to 5 Tres (CompMod value).",
     "  - Tunnel entrances now show on the map as Entry 1-4 and Exit 1-4.",
     "",
-    "## Hallucinations",
-    "  - Hallucinations no longer gain health as biomass rises (CompMod change).",
-    "  - Hallucinated Lerks can no longer use Umbra or Spores (CompMod change).",
-    "  - Hallucinated Onos can no longer Stomp (B2TP's own extension of the same idea).",
-    "",
     "# MARINES",
     "",
     "## Round start",
@@ -122,7 +118,8 @@ kChangelogs.en =
 
 kChangelogs.pt =
 {
-    "Blast to the Past, construído sobre o Community Balance Mod com o CBM Core Toggle ativado. Tudo o que o CBM muda continua valendo; esta lista traz apenas o que o B2TP muda por cima dele. O objetivo continua o mesmo: ajustar o NS2 para 6v6-8v8, o tamanho original em que rodavam os servidores públicos. A maioria das mudanças devolve valores ou mecânicas ao que o vanilla usava anos atrás, ou vem do ENSL CompMod, para melhorar a expressão de habilidade sem deixar de servir para um servidor público organizado e coordenado.",
+    "Blast to the Past, construído sobre o Community Balance Mod com o CBM Core Toggle ativado. Tudo o que o CBM muda continua valendo; esta lista traz apenas o que o B2TP muda por cima dele.",
+    "O objetivo continua o mesmo: ajustar o NS2 para 6v6-8v8, o tamanho original em que rodavam os servidores públicos. A maioria das mudanças devolve valores ou mecânicas ao que o vanilla usava anos atrás, ou vem do ENSL CompMod, para melhorar a expressão de habilidade sem deixar de servir para um servidor público organizado e coordenado.",
     "",
     "# ALIENS",
     "",
@@ -160,11 +157,6 @@ kChangelogs.pt =
     "  - Custo de realocar túnel reduzido de 6 para 5 Tres (valor do CompMod).",
     "  - As entradas de túnel agora aparecem no mapa como Entry 1-4 e Exit 1-4.",
     "",
-    "## Alucinações",
-    "  - As alucinações não ganham mais vida conforme a biomass sobe (mudança do CompMod).",
-    "  - Os Lerks alucinados não podem mais usar Umbra nem Spores (mudança do CompMod).",
-    "  - Os Onos alucinados não podem mais usar Stomp (extensão própria do B2TP para a mesma ideia).",
-    "",
     "# MARINES",
     "",
     "## Início de round",
@@ -198,7 +190,8 @@ kChangelogs.pt =
 
 kChangelogs.es =
 {
-    "Blast to the Past, construido sobre el Community Balance Mod con el CBM Core Toggle activado. Todo lo que cambia CBM sigue aplicando; esta lista es solo lo que B2TP cambia por encima. El objetivo sigue siendo el mismo: ajustar NS2 para 6v6-8v8, el tamaño original con el que funcionaban los servidores públicos. La mayoría de los cambios devuelven valores o mecánicas a lo que el vanilla usaba años atrás, o vienen de ENSL CompMod, para mejorar la expresión de habilidad sin dejar de servir para un servidor público organizado y coordinado.",
+    "Blast to the Past, construido sobre el Community Balance Mod con el CBM Core Toggle activado. Todo lo que cambia CBM sigue aplicando; esta lista es solo lo que B2TP cambia por encima.",
+    "El objetivo sigue siendo el mismo: ajustar NS2 para 6v6-8v8, el tamaño original con el que funcionaban los servidores públicos. La mayoría de los cambios devuelven valores o mecánicas a lo que el vanilla usaba años atrás, o vienen de ENSL CompMod, para mejorar la expresión de habilidad sin dejar de servir para un servidor público organizado y coordinado.",
     "",
     "# ALIENS",
     "",
@@ -235,11 +228,6 @@ kChangelogs.es =
     "## Túneles",
     "  - Costo de reubicar túnel reducido de 6 a 5 Tres (valor de CompMod).",
     "  - Las entradas de túnel ahora aparecen en el mapa como Entry 1-4 y Exit 1-4.",
-    "",
-    "## Alucinaciones",
-    "  - Las alucinaciones ya no ganan vida a medida que sube la biomass (cambio de CompMod).",
-    "  - Los Lerks alucinados ya no pueden usar Umbra ni Spores (cambio de CompMod).",
-    "  - Los Onos alucinados ya no pueden usar Stomp (extensión propia de B2TP para la misma idea).",
     "",
     "# MARINES",
     "",

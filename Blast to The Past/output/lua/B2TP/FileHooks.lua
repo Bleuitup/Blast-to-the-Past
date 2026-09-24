@@ -38,7 +38,6 @@ local pieces = {
 "Cysts",
 "Fade Abilities",
 "GorgeTunnels",
-"Hallucinations",
 "GUI",
 "Hitpoints",
 "MedpackTech",

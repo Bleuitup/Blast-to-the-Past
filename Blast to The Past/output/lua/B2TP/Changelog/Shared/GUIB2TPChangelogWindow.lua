@@ -269,6 +269,40 @@ local function AddLineGroup(self, lineGroup, style, lineNumber)
 
 end
 
+-- A single GUIItem renders at most 511 characters (bytes, so an accented letter counts as 2).
+-- Line groups below are kept under 500, but one long line would still become an oversized item on
+-- its own, so break any line longer than this at a space. A space byte never occurs inside a UTF-8
+-- multibyte character, so this cannot split an accented letter.
+local kMaxLineBytes = 480
+
+local function SplitLongLine(line)
+
+    local pieces = {}
+
+    while string.len(line) > kMaxLineBytes do
+
+        local cut
+        for pos = kMaxLineBytes, 1, -1 do
+            if string.sub(line, pos, pos) == " " then
+                cut = pos
+                break
+            end
+        end
+
+        if not cut then
+            break
+        end
+
+        table.insert(pieces, string.sub(line, 1, cut - 1))
+        line = string.sub(line, cut + 1)
+
+    end
+
+    table.insert(pieces, line)
+    return pieces
+
+end
+
 function GUIB2TPChangelogWindow:LoadChangelog(changelogText)
 
     for i = 1, #self.contentObs do
@@ -277,7 +311,13 @@ function GUIB2TPChangelogWindow:LoadChangelog(changelogText)
 
     self.contentObs = {}
 
-    local changelogLines = string.Explode(changelogText, "\n")
+    local changelogLines = {}
+    for _, rawLine in ipairs(string.Explode(changelogText, "\n")) do
+        local rest, numTokens = SplitHeadingLevel(rawLine)
+        for _, piece in ipairs(SplitLongLine(rest)) do
+            table.insert(changelogLines, { piece, numTokens })
+        end
+    end
 
     -- Keep track of consecutive lines with the same style so we don't create one GUI object per
     -- line -- long changelogs would otherwise create hundreds of paragraph objects.
@@ -286,8 +326,7 @@ function GUIB2TPChangelogWindow:LoadChangelog(changelogText)
 
     for i = 1, #changelogLines do
 
-        local rawLine = changelogLines[i]
-        local rest, numTokens = SplitHeadingLevel(rawLine)
+        local rest, numTokens = changelogLines[i][1], changelogLines[i][2]
         local processedLine = string.format("  %s", rest)
 
         if i == 1 then
