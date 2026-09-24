@@ -1,0 +1,111 @@
+mod id 3426836832
+
+[h1]Blast to the Past (B2TP)[/h1]
+[b]Requires:[/b] Community Balance Mod and CBM: Core Edition Toggle, loaded alongside B2TP.
+
+[b]TL;DR:[/b] Blast to the Past, built on top of the Community Balance Mod with the CBM Core Toggle on. Everything CBM changes still applies; this list is only what B2TP changes on top of it. The aim is unchanged: tune NS2 for 6v6-8v8, the original size public servers ran at. Most changes either return values or mechanics to what vanilla used to run years ago, or come from ENSL CompMod, to improve skill expression while staying suited to a managed, coordinated public server.
+
+[hr][/hr]
+
+[h1]ALIENS[/h1]
+[h2]Skulk[/h2]
+[list]
+[*][b]Leap energy[/b] 45 -> 55 [i](CompMod value)[/i]
+[*][b]Vampirism[/b] 4.66% -> 3.77% per shell [i](CompMod value)[/i]. Vampirism also works on Exos now
+[/list]
+
+[h2]Gorge[/h2]
+[list]
+[*][b]Gorges can drop tunnels themselves[/b] 5 Pres per entrance [i](adapted from CompMod, whose own drop cost is 4)[/i], but only into a room with no working power node [i](unbuilt, destroyed or damaged)[/i], or onto infestation. They come up fully mature and spread infestation immediately
+[/list]
+
+[h2]Lerk[/h2]
+[list]
+[*][b]Lerk health[/b] 180 -> 170 [i](CompMod value)[/i]
+[*][b]Lerk spike damage[/b] 5 -> 5.5 [i](interpolated from CompMod, whose own value is 6)[/i]
+[/list]
+
+[h2]Fade[/h2]
+[list]
+[*][b]Advanced Swipe[/b] new at Biomass 8 -- +8% swipe damage [i](CompMod's own damage scalar, exactly)[/i], 30 Tres, 90 second research [i](CompMod's own cost/research time are 25 Tres / 60s -- tuned for B2TP)[/i]. This will kill a marine on armor 2 in three swipes. Countered by armor 3
+[/list]
+
+[h2]Onos[/h2]
+[list]
+[*][b]Boneshield HP[/b] 1000 -> 600 [i](1000 was balanced for 10v10)[/i]. CBM's Boneshield regeneration and damage reduction still apply
+[*][b]Stomp energy[/b] 30 -> 45 [i](curbs stomp spam when the alien team has no adrenaline or a shift to sustain it)[/i]
+[/list]
+
+[h2]Upgrades[/h2]
+[list]
+[*][b]Aura[/b] no longer reveals health: Aura icons are always plain white
+[/list]
+
+[h2]Structures[/h2]
+[list]
+[*][b]Crag, Shift, Shade and Whip[/b] all cost 10 Tres
+[/list]
+
+[h2]Cysts[/h2]
+[list]
+[*][b]Build time[/b] 3.33 -> 6 seconds [i](CompMod value)[/i]
+[*][b]Shift hive build multiplier[/b] x1.25 -> x1.5 [i](CompMod value)[/i], since vanilla cysting is broken in normal player counts
+[*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
+[*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
+[/list]
+
+[h2]Tunnels[/h2]
+[list]
+[*][b]Relocating[/b] 6 -> 5 Tres [i](CompMod value)[/i]
+[*][b]Minimap[/b] tunnel entrances are now labelled Entry 1-4 and Exit 1-4 on the map
+[/list]
+
+[h2]Hallucinations[/h2]
+[list]
+[*][b]Biomass health[/b] removed -- hallucinations no longer get tougher as biomass rises [i](CompMod change)[/i]
+[*][b]Abilities[/b] hallucinated Lerks can no longer use Umbra or Spores [i](CompMod change)[/i]; hallucinated Onos can no longer Stomp [i](B2TP's own extension of the same idea)[/i]
+[/list]
+
+[hr][/hr]
+
+[h1]MARINES[/h1]
+[h2]Round start[/h2]
+Marines start with 1 IP (vanilla and CBM!) but
+[list]
+[*][b]7v7[/b] +5 Tres
+[*][b]8v8[/b] +10 Tres
+[/list]
+This serves as an interpolation between 1 IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10, which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 amounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
+
+[h2]ARCs[/h2]
+[list]
+[*][b]ARC health[/b] 2600 -> 2100 [i](interpolated -- CompMod's own value is 1800)[/i]
+[*][b]ARC armor[/b] 400 -> 500 [i](CompMod value)[/i], limited to 4 [i](CompMod value)[/i]
+[/list]
+
+[h2]Medpack Tech[/h2]
+Marines get Medpack Tech #1 and #2, ported from ENSL CompMod seasons 13 and 14:
+[list]
+[*][b]Default[/b] heal 25/25, identical to vanilla
+[*][b]Medtech #1[/b] researched at the Armory. Heal 30/20
+[*][b]Medtech #2[/b] researched at the Armory, requires an Advanced Armory and Medtech #1. Heal 40/10
+[/list]
+This makes medding scale as the round progresses, since vanilla meds are truly lacking in the end game.
+
+[h2]Weapons[/h2]
+[list]
+[*][b]Shotgun weapon upgrades[/b] 7.84% -> 10% per level vs players, 15.68% -> 20% vs structures, the same as every other weapon
+[*][b]Shotgun falloff start[/b] 5m -> 7.5m
+[*][b]Shotgun falloff end[/b] 15m -> 17.5m
+[*][b]Dropped weapon stay time[/b] 16 -> 20 seconds
+[/list]
+The shotgun falloff change is half of the CompMod change (CompMod moves falloff to 10m/20m; B2TP splits the difference with vanilla's 5m/15m). The 50% damage floor past the falloff-end range is unchanged vanilla/CompMod behavior -- only where the falloff starts and ends has moved. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA.
+
+[hr][/hr]
+
+[h1]Credits[/h1]
+[b]Author:[/b] Bleu
+
+[b]Developed for:[/b] the NS2 Sudamerica community. Join us at [url=https://discord.gg/NS2-Sudamerica]discord.gg/NS2-Sudamerica[/url].
+
+Several changes here are ported or adapted from ENSL CompMod / CBM, with permission from their respective authors.
