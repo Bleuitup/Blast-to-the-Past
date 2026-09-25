@@ -1,37 +1,9 @@
-TeamInfo.kRelevantTechIdsMarine =
-{
-
-    kTechId.ShotgunTech,
-    kTechId.MinesTech,
-    kTechId.WelderTech,
-    kTechId.GrenadeTech,
-    
-    kTechId.AdvancedArmory,
-    kTechId.AdvancedArmoryUpgrade,
-    kTechId.AdvancedWeaponry,
-
-    kTechId.Weapons1,
-    kTechId.Weapons2,
-    kTechId.Weapons3,
-    kTechId.Armor1,
-    kTechId.Armor2,
-    kTechId.Armor3,
-
-    kTechId.PrototypeLab,
-    kTechId.JetpackTech,
-    kTechId.ExosuitTech,
-    kTechId.DualMinigunTech,
-
-    kTechId.ARCRoboticsFactory,
-    kTechId.UpgradeRoboticsFactory,
-    kTechId.MACEMPTech,
-    kTechId.MACSpeedTech,
-    
-    kTechId.Observatory,
-    kTechId.PhaseTech,
-
-    kTechId.AdvancedMarineSupport,
-	
-	kTechId.MedTech1,
-	kTechId.MedTech2,
-}
+-- Add Medpack Tech to the marine research list (the techs whose research state is networked to
+-- clients, e.g. for the tech map). Append only: replacing the list would drop every entry CBM adds
+-- (Exo Prototype Lab, modular exos, SMG, Advanced Observatory, ...). CBM's 64-bit mask allows up
+-- to 62 entries; CBM uses 33, so there is room.
+for _, techId in ipairs({ kTechId.MedTech1, kTechId.MedTech2 }) do
+    if not table.icontains(TeamInfo.kRelevantTechIdsMarine, techId) then
+        table.insert(TeamInfo.kRelevantTechIdsMarine, techId)
+    end
+end

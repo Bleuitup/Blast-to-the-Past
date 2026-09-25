@@ -11,7 +11,7 @@
 -- Substitution mechanism: core/lua/Locale.lua wraps Locale.ResolveString so it looks up
 -- Locale.substitutions[key] and resolves THAT instead. A key with no entry in the string tables
 -- resolves to itself, which is what allows a literal replacement string here rather than a key.
--- CBM's own Locale.lua relies on the same behaviour throughout.
+-- CBM's own Locale.lua relies on the same behavior throughout.
 --
 -- Hooked onto TechData rather than Locale because TechData is a file the mod already hooks in
 -- several places, and it only stores the tooltip KEY at load time; the string is not resolved

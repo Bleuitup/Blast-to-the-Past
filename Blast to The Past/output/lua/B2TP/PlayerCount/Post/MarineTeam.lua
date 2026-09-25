@@ -23,7 +23,8 @@ function MarineTeam:SpawnInitialStructures(techPoint)
 
     if Shared.GetCheatsEnabled() and MarineTeam.gSandboxMode then
         MakeTechEnt(techPoint, AdvancedArmory.kMapName, 3.5, -2, kMarineTeamType)
-        MakeTechEnt(techPoint, PrototypeLab.kMapName, -3.5, 2, kMarineTeamType)
+        -- CBM spawns its Exo Prototype Lab here; plain Prototype Lab when CBM is absent.
+        MakeTechEnt(techPoint, (ExoPrototypeLab and ExoPrototypeLab.kMapName) or PrototypeLab.kMapName, -3.5, 2, kMarineTeamType)
     end
 
     return tower, commandStation
