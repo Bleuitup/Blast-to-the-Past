@@ -65,7 +65,7 @@ local kYOffset = 900
 -- Language buttons. All values are in the same 3840x2160 mockup space as kWindowSize above.
 --
 -- The band between the top of the window and the top of the inner content box is
--- kInnerBackgroundTopSpacing - kUnderlapYSize = 99 tall, and the title sits centred in it. These
+-- kInnerBackgroundTopSpacing - kUnderlapYSize = 99 tall, and the title sits centered in it. These
 -- flags are anchored to the top RIGHT of the window and sized to sit inside that band, so they
 -- share the header strip with the title without overlapping it or the content box below.
 local kFlagSize = Vector(132, 66, 0)
@@ -168,7 +168,7 @@ function GUIB2TPChangelogWindow:InitializeLanguageBar()
 end
 
 -- Selected flag is drawn at full brightness, the others dimmed, brightening on mouse-over. Uses
--- colour rather than a second texture per flag so the placeholder art stays a single file each.
+-- color rather than a second texture per flag so the placeholder art stays a single file each.
 function GUIB2TPChangelogWindow:UpdateLanguageButtons()
 
     if not self.languageButtons then return end

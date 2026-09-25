@@ -34,7 +34,6 @@ local pieces = {
 "Aura",
 "Changelog",
 "Costs",
-"Diagnostics",
 "Cysts",
 "Fade Abilities",
 "GorgeTunnels",

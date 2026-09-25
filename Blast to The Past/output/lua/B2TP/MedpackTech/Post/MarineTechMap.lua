@@ -7,7 +7,7 @@
 --
 -- Medtech #2 takes Advanced Weaponry's old spot, so Advanced Weaponry moves south of the Advanced
 -- Armory and CBM's original Advanced Armory -> Advanced Weaponry line is removed. A 5th field on a
--- line draws it in CBM's purple "also requires" colour.
+-- line draws it in CBM's purple "also requires" color.
 
 local function FindEntry(techId)
     for _, entry in ipairs(kMarineTechMap) do

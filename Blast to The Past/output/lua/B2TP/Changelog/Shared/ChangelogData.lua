@@ -27,7 +27,7 @@
 -- Markup, matching kStyleToFontsMap in GUIB2TPChangelogWindow.lua. Heading markers only count
 -- when LEADING the line (see SplitHeadingLevel in GUIB2TPChangelogWindow.lua) -- a '#' anywhere
 -- else, such as in "Medtech #1", is just a character:
---   # line    -> section heading    (ALIENS / MARINES / CREDITS), largest, highlight colour
+--   # line    -> section heading    (ALIENS / MARINES / CREDITS), largest, highlight color
 --   ## line   -> subsection heading (Skulk, Gorge, Lerk, Fade, Onos, ...)
 --   plain line, prefixed "  - "     -> a change
 --   plain line, no prefix           -> body prose (section intro or conclusion)
@@ -40,7 +40,7 @@
 -- of them containing "--" with no issue. Avoid reintroducing a long-bracket string here.
 --
 -- This file is saved as UTF-8. The accented characters in the Portuguese and Spanish tables rely
--- on that; NS2 ships official ptBR and esES localisations, so the menu fonts cover them.
+-- on that; NS2 ships official ptBR and esES localizations, so the menu fonts cover them.
 
 local kChangelogs = {}
 
