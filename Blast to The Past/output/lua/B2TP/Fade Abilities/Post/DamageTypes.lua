@@ -1,61 +1,21 @@
---local oldGetUpgradedDamage = NS2Gamerules_GetUpgradedDamage
-
---function NS2Gamerules_GetUpgradedDamage(attacker, doer, damage, damageType, hitPoint)
-
---    if doer
---    and doer.kMapName == "swipe"
---    and attacker
---    and GetHasTech(attacker, kTechId.AdvancedSwipe) then
---        return damage * kAdvancedSwipeDamageScalar
---    end
-
---    return oldGetUpgradedDamage(attacker, doer, damage, damageType, hitPoint)
+-- Advanced Swipe: +kAdvancedSwipeDamageScalar on swipe damage once the tech is researched.
 --
---end
+-- Every argument after damage is passed through untouched with "...". CBM's version of this
+-- function takes a 6th argument, target, and applies weapon upgrades only when target is not nil
+-- (it needs the target for its x2-vs-structures rule). An earlier version of this wrapper forwarded
+-- only vanilla's five arguments, which silently switched off W1-W3 for every marine weapon.
 
 local oldGetUpgradedDamage = NS2Gamerules_GetUpgradedDamage
 
-function NS2Gamerules_GetUpgradedDamage(attacker, doer, damage, damageType, hitPoint)
-
-    local hasAdvancedSwipe = attacker and GetHasTech(attacker, kTechId.AdvancedSwipe, true) or false
-    local hasStab = attacker and GetHasTech(attacker, kTechId.Stab, true) or false
-
-    local doerMapName = doer and doer.kMapName or "nil"
-    local doerClassName = "nil"
-
-    if doer and doer.GetClassName then
-        doerClassName = doer:GetClassName()
-    end
-
---    if Server and attacker and doer and (doerClassName == "SwipeBlink" or doerClassName == "StabBlink" or doerMapName == "swipe") then
---        Print(string.format(
---            "[ADVSWIPE DEBUG] class=%s map=%s adv=%s stab=%s baseDamage=%.2f",
---            tostring(doerClassName),
---            tostring(doerMapName),
---            tostring(hasAdvancedSwipe),
---            tostring(hasStab),
---            damage
---        ))
---    end
+function NS2Gamerules_GetUpgradedDamage(attacker, doer, damage, ...)
 
     if doer
     and doer.kMapName == "swipe"
     and attacker
-    and hasAdvancedSwipe then
-
---        if Server then
---            Print(string.format(
---                "[ADVSWIPE APPLIED] class=%s map=%s scalar=%.3f finalDamage=%.2f",
---                tostring(doerClassName),
---                tostring(doerMapName),
---                kAdvancedSwipeDamageScalar,
---                damage * kAdvancedSwipeDamageScalar
---            ))
---        end
-
+    and GetHasTech(attacker, kTechId.AdvancedSwipe, true) then
         return damage * kAdvancedSwipeDamageScalar
     end
 
-    return oldGetUpgradedDamage(attacker, doer, damage, damageType, hitPoint)
+    return oldGetUpgradedDamage(attacker, doer, damage, ...)
 
 end
