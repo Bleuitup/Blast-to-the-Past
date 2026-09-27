@@ -1,7 +1,7 @@
 -- Medpack Tech on CBM's marine tech map. Coordinates are CBM's, which are the same with the Core
 -- Toggle on or off:
 --
---   Armory (5.75, 3) --blue--> Medtech #1 (4.75, 5.5) --blue--> Medtech #2 (4.75, 7)
+--   Armory (5.75, 3) --purple--> Medtech #1 (4.75, 5.5) --blue--> Medtech #2 (4.75, 7)
 --   Advanced Armory (5.75, 7) --purple--> Medtech #2          (#2 also requires an Advanced Armory)
 --   Advanced Armory (5.75, 7) --purple--> Advanced Weaponry (5.75, 8.5)
 --
@@ -44,7 +44,7 @@ local function PurpleLine(fromTechId, toTechId)
     return line
 end
 
-table.insert(kMarineLines, GetLinePositionForTechMap(kMarineTechMap, kTechId.Armory, kTechId.MedTech1))
+table.insert(kMarineLines, PurpleLine(kTechId.Armory, kTechId.MedTech1))
 table.insert(kMarineLines, GetLinePositionForTechMap(kMarineTechMap, kTechId.MedTech1, kTechId.MedTech2))
 table.insert(kMarineLines, PurpleLine(kTechId.AdvancedArmory, kTechId.MedTech2))
 table.insert(kMarineLines, PurpleLine(kTechId.AdvancedArmory, kTechId.AdvancedWeaponry))

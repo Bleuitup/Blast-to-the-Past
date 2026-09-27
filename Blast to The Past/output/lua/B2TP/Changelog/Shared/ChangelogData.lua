@@ -46,7 +46,7 @@ local kChangelogs = {}
 
 kChangelogs.en =
 {
-    "Blast to the Past, built on top of the Community Balance Mod with the CBM Core Toggle on. Everything CBM changes still applies; this list is only what B2TP changes on top of it.",
+    "Blast to the Past, built on top of the Community Balance Mod's Core Edition. B2TP switches CBM's Content Edition off by itself, so the CBM Core Toggle is no longer needed. Everything CBM changes still applies; this list is only what B2TP changes on top of it.",
     "The aim is unchanged: tune NS2 for 6v6-8v8, the original size public servers ran at. Most changes either return values or mechanics to what vanilla used to run years ago, or come from ENSL CompMod, to improve skill expression while staying suited to a managed, coordinated public server.",
     "",
     "# ALIENS",
@@ -118,7 +118,7 @@ kChangelogs.en =
 
 kChangelogs.pt =
 {
-    "Blast to the Past, construído sobre o Community Balance Mod com o CBM Core Toggle ativado. Tudo o que o CBM muda continua valendo; esta lista traz apenas o que o B2TP muda por cima dele.",
+    "Blast to the Past, construído sobre a Core Edition do Community Balance Mod. O B2TP desativa sozinho a Content Edition do CBM, então o CBM Core Toggle não é mais necessário. Tudo o que o CBM muda continua valendo; esta lista traz apenas o que o B2TP muda por cima dele.",
     "O objetivo continua o mesmo: ajustar o NS2 para 6v6-8v8, o tamanho original em que rodavam os servidores públicos. A maioria das mudanças devolve valores ou mecânicas ao que o vanilla usava anos atrás, ou vem do ENSL CompMod, para melhorar a expressão de habilidade sem deixar de servir para um servidor público organizado e coordenado.",
     "",
     "# ALIENS",
@@ -190,7 +190,7 @@ kChangelogs.pt =
 
 kChangelogs.es =
 {
-    "Blast to the Past, construido sobre el Community Balance Mod con el CBM Core Toggle activado. Todo lo que cambia CBM sigue aplicando; esta lista es solo lo que B2TP cambia por encima.",
+    "Blast to the Past, construido sobre la Core Edition del Community Balance Mod. B2TP desactiva por su cuenta la Content Edition de CBM, así que el CBM Core Toggle ya no hace falta. Todo lo que cambia CBM sigue aplicando; esta lista es solo lo que B2TP cambia por encima.",
     "El objetivo sigue siendo el mismo: ajustar NS2 para 6v6-8v8, el tamaño original con el que funcionaban los servidores públicos. La mayoría de los cambios devuelven valores o mecánicas a lo que el vanilla usaba años atrás, o vienen de ENSL CompMod, para mejorar la expresión de habilidad sin dejar de servir para un servidor público organizado y coordinado.",
     "",
     "# ALIENS",

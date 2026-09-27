@@ -13,13 +13,15 @@ server.
 
 | Versions | Base game | Requires |
 |---|---|---|
-| **v2.0 and later** | Community Balance Mod (CBM), Core Edition | CBM **and** the CBM Core Edition Toggle, loaded alongside B2TP |
+| **v2.01 and later** | Community Balance Mod (CBM), Core Edition | CBM, loaded alongside B2TP |
+| v2.0 to v2.00d | Community Balance Mod (CBM), Core Edition | CBM **and** the CBM Core Edition Toggle, loaded alongside B2TP |
 | v1.00 to v1.37 | Vanilla NS2, Build 344 | Nothing else |
 
 Up to v1.37, B2TP was a set of changes on top of vanilla Build 344.
 
-From v2.0, B2TP runs on top of CBM with the Core Toggle on, which turns off CBM's Content Edition
-additions. Given the current public playtests, it is very likely that most of CBM Core's features will
+From v2.0, B2TP runs on top of CBM's Core Edition, with CBM's Content Edition additions switched
+off. Up to v2.00d that took the separate CBM Core Toggle mod; from v2.01, B2TP switches them off
+itself, so only CBM is needed. Given the current public playtests, it is very likely that most of CBM Core's features will
 become the new vanilla, so v2.0 moves B2TP onto that base ahead of time. Everything CBM Core changes
 still applies, and B2TP's changes sit on top of it.
 
@@ -72,8 +74,10 @@ subfolder repeats that path, as in `Fade Abilities/Post/Weapons/Alien/SwipeBlink
 When adding a piece, add its name to the `pieces` list in `FileHooks.lua` as well; folders that are
 not listed are not loaded.
 
-B2TP's entry priority (28) is lower than CBM's and the Core Toggle's (100). ModLoader runs higher
-priorities first, so B2TP's post hooks run after CBM's and B2TP's values are the ones that stay.
+B2TP's entry priority (28) is lower than CBM's (100). ModLoader runs higher priorities first, so
+B2TP's post hooks run after CBM's and B2TP's values are the ones that stay. The `CBM Core` piece
+uses this to set `kCBMaddon = false` right after CBM's `Balance.lua`, which is how B2TP switches the
+Content Edition off.
 
 ## Publishing
 
