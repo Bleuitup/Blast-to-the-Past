@@ -32,6 +32,7 @@ local pieces = {
 "Alien Abilities",
 "ARCs",
 "Aura",
+"CBM Core",
 "Changelog",
 "Costs",
 "Cysts",
