@@ -14,7 +14,7 @@ server.
 | Versions | Base game | Requires |
 |---|---|---|
 | **v2.0 and later** | Community Balance Mod (CBM), Core Edition | CBM **and** the CBM Core Edition Toggle, loaded alongside B2TP |
-| v1.22 to v1.37 | Vanilla NS2, Build 344 | Nothing else |
+| v1.00 to v1.37 | Vanilla NS2, Build 344 | Nothing else |
 
 Up to v1.37, B2TP was a set of changes on top of vanilla Build 344.
 
