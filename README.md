@@ -19,8 +19,9 @@ server.
 Up to v1.37, B2TP was a set of changes on top of vanilla Build 344.
 
 From v2.0, B2TP runs on top of CBM with the Core Toggle on, which turns off CBM's Content Edition
-additions. CBM Core Edition is set to become the base game, so v2.0 moves B2TP onto what will be the
-new vanilla. Everything CBM Core changes still applies, and B2TP's changes sit on top of it.
+additions. Given the current public playtests, it is very likely that most of CBM Core's features will
+become the new vanilla, so v2.0 moves B2TP onto that base ahead of time. Everything CBM Core changes
+still applies, and B2TP's changes sit on top of it.
 
 The version tags in this repository mark what was published to the Workshop: `v1.22` to `v1.37` are
 the Build 344 versions, `v2.0` onwards the CBM ones.
