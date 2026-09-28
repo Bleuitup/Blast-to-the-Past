@@ -1,13 +1,21 @@
--- Medpack Tech on CBM's marine tech map. Coordinates are CBM's, which are the same with the Core
--- Toggle on or off:
+-- Medpack Tech on CBM's marine tech map. Both Medtechs are researched at the Command Station, so
+-- they hang off it, in the top row beside Advanced Marine Support (CBM's row for Command Station
+-- research). CBM 3.5 and 3.6 both put the Command Station at (7, 1) and Advanced Marine Support at
+-- (7, 0), with the two cells to its left free:
 --
---   Armory (5.75, 3) --purple--> Medtech #1 (4.75, 5.5) --blue--> Medtech #2 (4.75, 7)
---   Advanced Armory (5.75, 7) --purple--> Medtech #2          (#2 also requires an Advanced Armory)
---   Advanced Armory (5.75, 7) --purple--> Advanced Weaponry (5.75, 8.5)
+--   Medtech #2 (5, 0) <-- Medtech #1 (6, 0)     Advanced Marine Support (7, 0)
+--                               |                        |
+--                               +------------------------+  (fork halfway up)
+--                                                        |
+--                                               Command Station (7, 1)
 --
--- Medtech #2 takes Advanced Weaponry's old spot, so Advanced Weaponry moves south of the Advanced
--- Armory and CBM's original Advanced Armory -> Advanced Weaponry line is removed. A 5th field on a
--- line draws it in CBM's purple "also requires" color.
+-- The fork is drawn as an elbow off the midpoint of CBM's own Command Station -> Advanced Marine
+-- Support line. All three lines are the default research color. Nothing of CBM's is moved: earlier
+-- versions moved Advanced Weaponry, whose spot CBM 3.6 changed.
+--
+-- The Armory and Advanced Armory requirements are not drawn: from the top row those lines would
+-- cross the Command Station's own. (CBM 3.6 also changed a line's 5th field from a flag to a Color,
+-- which is what made the old purple requirement lines invisible there.)
 
 local function FindEntry(techId)
     for _, entry in ipairs(kMarineTechMap) do
@@ -17,34 +25,19 @@ local function FindEntry(techId)
     end
 end
 
-local advancedArmory = FindEntry(kTechId.AdvancedArmory)
-local advancedWeaponry = FindEntry(kTechId.AdvancedWeaponry)
+local commandStation = FindEntry(kTechId.CommandStation)
+local marineSupport = FindEntry(kTechId.AdvancedMarineSupport)
 
-if advancedArmory and advancedWeaponry then
+if commandStation and marineSupport then
 
-    -- Remove CBM's line from the Advanced Armory to Advanced Weaponry's old position.
-    for i = #kMarineLines, 1, -1 do
-        local line = kMarineLines[i]
-        if line[1] == advancedArmory[2] and line[2] == advancedArmory[3]
-        and line[3] == advancedWeaponry[2] and line[4] == advancedWeaponry[3] then
-            table.remove(kMarineLines, i)
-        end
-    end
+    local x, y = marineSupport[2], marineSupport[3]
+    local forkY = (y + commandStation[3]) * 0.5
 
-    advancedWeaponry[2], advancedWeaponry[3] = 5.75, 8.5
+    table.insert(kMarineTechMap, { kTechId.MedTech1, x - 1, y })
+    table.insert(kMarineTechMap, { kTechId.MedTech2, x - 2, y })
+
+    table.insert(kMarineLines, { x, forkY, x - 1, forkY })
+    table.insert(kMarineLines, { x - 1, forkY, x - 1, y })
+    table.insert(kMarineLines, GetLinePositionForTechMap(kMarineTechMap, kTechId.MedTech1, kTechId.MedTech2))
 
 end
-
-table.insert(kMarineTechMap, { kTechId.MedTech1, 4.75, 5.5 })
-table.insert(kMarineTechMap, { kTechId.MedTech2, 4.75, 7 })
-
-local function PurpleLine(fromTechId, toTechId)
-    local line = GetLinePositionForTechMap(kMarineTechMap, fromTechId, toTechId)
-    line[5] = 0
-    return line
-end
-
-table.insert(kMarineLines, PurpleLine(kTechId.Armory, kTechId.MedTech1))
-table.insert(kMarineLines, GetLinePositionForTechMap(kMarineTechMap, kTechId.MedTech1, kTechId.MedTech2))
-table.insert(kMarineLines, PurpleLine(kTechId.AdvancedArmory, kTechId.MedTech2))
-table.insert(kMarineLines, PurpleLine(kTechId.AdvancedArmory, kTechId.AdvancedWeaponry))
