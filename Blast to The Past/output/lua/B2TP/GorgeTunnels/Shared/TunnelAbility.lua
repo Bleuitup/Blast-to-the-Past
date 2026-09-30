@@ -31,6 +31,20 @@ function TunnelAbility:GetTechIds()
     assert(false)
 end
 
+-- CBM 3.6's DropStructureAbility:GetPositionForStructure asks every structure ability
+-- structureAbility.GetDropMapName() == Clog.kMapName (its clog bridge assist) with a dot, so
+-- without self. The inherited StructureAbility version is assert(false), which logged an
+-- assertion every frame a Gorge had a tunnel selected. That check only needs "not a Clog".
+-- Called with self, this is DropStructureAbility:CreateStructure's fallback for when our
+-- CreateStructure returned nothing: keep failing there as before, rather than spawning a bare
+-- TunnelEntrance outside the tunnel manager.
+function TunnelAbility.GetDropMapName(self)
+    if self == nil then
+        return TunnelEntrance.kMapName
+    end
+    return StructureAbility.GetDropMapName(self)
+end
+
 local kExtents = Vector(0.4, 0.5, 0.4)
 local function IsPathable(position)
     local noBuild = Pathing.GetIsFlagSet(position, kExtents, Pathing.PolyFlag_NoBuild)
