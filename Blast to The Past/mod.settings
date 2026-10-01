@@ -56,6 +56,7 @@ mod id 3426836832
 [*][b]Shift hive build multiplier[/b] x1.25 -> x1.5 [i](CompMod value)[/i], since vanilla cysting is broken in normal player counts
 [*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
 [*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
+[*][b]Mature cyst health[/b] 450 -> 375, halfway between the CompMod value (300) and the CBM value (450)
 [/list]
 
 [h2]Tunnels[/h2]
