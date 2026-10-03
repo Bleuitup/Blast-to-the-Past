@@ -52,10 +52,11 @@ mod id 3426836832
 
 [h2]Cysts[/h2]
 [list]
-[*][b]Build time[/b] 3.33 -> 6 seconds [i](CompMod value)[/i]
+[*][b]Build time[/b] 6.7 -> 9.3 seconds, halfway between vanilla and CompMod (12 seconds), a better fit for 8v8 games
 [*][b]Shift hive build multiplier[/b] x1.25 -> x1.5 [i](CompMod value)[/i], since vanilla cysting is broken in normal player counts
 [*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
 [*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
+[*][b]Mature cyst health[/b] 450 -> 375, halfway between the CompMod value (300) and the CBM value (450)
 [/list]
 
 [h2]Tunnels[/h2]
@@ -98,6 +99,11 @@ This makes medding scale as the round progresses, since vanilla meds are truly l
 [*][b]Dropped weapon stay time[/b] 16 -> 20 seconds
 [/list]
 The shotgun falloff change is half of the CompMod change (CompMod moves falloff to 10m/20m; B2TP splits the difference with vanilla's 5m/15m). The 50% damage floor past the falloff-end range is unchanged vanilla/CompMod behavior -- only where the falloff starts and ends has moved. Vanilla shotguns aren't terrible now. There's a reason the 10v10 meta skips them over entirely for AA.
+
+[h2]Exos[/h2]
+[list]
+[*][b]Ejected Exosuits[/b] any Marine can climb in right away, instead of the suit staying reserved 30 seconds for the pilot who left it. Buy an Exo and hand it to a teammate
+[/list]
 
 [hr][/hr]
 
