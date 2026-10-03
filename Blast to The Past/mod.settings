@@ -52,7 +52,7 @@ mod id 3426836832
 
 [h2]Cysts[/h2]
 [list]
-[*][b]Build time[/b] 3.33 -> 6 seconds [i](CompMod value)[/i]
+[*][b]Build time[/b] 6.7 -> 9.3 seconds, halfway between vanilla and CompMod (12 seconds), a better fit for 8v8 games
 [*][b]Shift hive build multiplier[/b] x1.25 -> x1.5 [i](CompMod value)[/i], since vanilla cysting is broken in normal player counts
 [*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
 [*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
