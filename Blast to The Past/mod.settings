@@ -40,11 +40,6 @@ mod id 3426836832
 [*][b]Stomp energy[/b] 30 -> 45 [i](curbs stomp spam when the alien team has no adrenaline or a shift to sustain it)[/i]
 [/list]
 
-[h2]Upgrades[/h2]
-[list]
-[*][b]Aura[/b] no longer reveals health: Aura icons are always plain white
-[/list]
-
 [h2]Structures[/h2]
 [list]
 [*][b]Crag, Shift, Shade and Whip[/b] all cost 10 Tres

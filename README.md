@@ -38,7 +38,7 @@ The full list for the current version is in two places:
 
 In short, it touches:
 
-- **Aliens:** skulk, lerk, fade (Advanced Swipe research), onos, Aura, support structure costs,
+- **Aliens:** skulk, lerk, fade (Advanced Swipe research), onos, support structure costs,
   cysts, and gorge-dropped tunnels
 - **Marines:** round start (1 Infantry Portal, with extra team resources at 7v7 and 8v8), ARCs,
   Medpack Tech #1 and #2, shotgun upgrades and falloff, and how long dropped weapons stay
