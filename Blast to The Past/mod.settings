@@ -15,7 +15,7 @@ mod id 3426836832
 [h2]Skulk[/h2]
 [list]
 [*][b]Leap energy[/b] 45 -> 55 [i](CompMod value)[/i]
-[*][b]Vampirism[/b] 4.66% -> 3.77% per shell [i](CompMod value)[/i]. Vampirism also works on Exos now
+[*][b]Vampirism[/b] 4.66% -> 3.77% per shell [i](CompMod value)[/i]
 [/list]
 
 [h2]Gorge[/h2]

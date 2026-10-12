@@ -3,7 +3,7 @@ function GUIFeedback:Initialize()
     oldInitialize(self)
 
     local oldText = self.buildText:GetText()
-    local newText = oldText .. " - B2TP v2.03"
+    local newText = oldText .. " - B2TP v2.04"
     
     self.buildText:SetText(newText)
 end
