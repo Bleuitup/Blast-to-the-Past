@@ -40,11 +40,6 @@ mod id 3426836832
 [*][b]Stomp energy[/b] 30 -> 45 [i](curbs stomp spam when the alien team has no adrenaline or a shift to sustain it)[/i]
 [/list]
 
-[h2]Structures[/h2]
-[list]
-[*][b]Crag, Shift, Shade and Whip[/b] all cost 10 Tres
-[/list]
-
 [h2]Cysts[/h2]
 [list]
 [*][b]Build time[/b] 6.7 -> 9.3 seconds, halfway between vanilla and CompMod (12 seconds), a better fit for 8v8 games
