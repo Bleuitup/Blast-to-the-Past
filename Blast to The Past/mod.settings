@@ -70,6 +70,7 @@ This serves as an interpolation between 1 IP and no bonuses for 6v6 (vanilla beh
 [list]
 [*][b]ARC health[/b] 2600 -> 2100 [i](interpolated -- CompMod's own value is 1800)[/i]
 [*][b]ARC armor[/b] 400 -> 500 [i](CompMod value)[/i], limited to 4 [i](CompMod value)[/i]
+[*][b]SPARC[/b] health 2600 -> 2100, armor 400 -> 500, matching the ARC as CBM intends
 [/list]
 
 [h2]Medpack Tech[/h2]
