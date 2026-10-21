@@ -9,7 +9,7 @@ end
 function Cyst:GetAutoBuildRateMultiplier()
     if GetHasTech(self, kTechId.ShiftHive) then
         -- return 1.25
-        return 1.5 -- increase by 20% from vanilla
+        return 1.4 -- 4.67 / (0.5 * 1.4) = 6.67 s, halfway between vanilla (5.33 s) and CompMod (8 s) with a Shift hive
     end
 
     return 1
