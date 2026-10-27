@@ -17,7 +17,7 @@ mod id 3426836832
 
 [h2]Gorge[/h2]
 [list]
-[*][b]Gorges can drop tunnels themselves[/b] 5 Pres per entrance [i](adapted from CompMod, whose own drop cost is 4)[/i], but only into a room with no working power node [i](unbuilt, destroyed or damaged)[/i], or onto infestation. They come up fully mature and spread infestation immediately
+[*][b]Gorges can drop tunnels themselves[/b] 5 Pres per entrance [i](adapted from CompMod, whose own drop cost is 4)[/i], but only into a room with no working power node [i](unbuilt, destroyed or damaged)[/i], or onto infestation. Dropped on infestation, they come up fully mature and spread infestation immediately. Dropped off infestation, they start unbuilt and immature [i](as in CompMod)[/i]: a gorge builds them with heal spray, and they spread infestation once mature
 [/list]
 
 [h2]Lerk[/h2]
@@ -39,12 +39,20 @@ mod id 3426836832
 
 [h2]Cysts[/h2]
 [list]
-[*][b]Build time[/b] 6.7 -> 9.3 seconds, halfway between vanilla and CompMod (12 seconds), a better fit for 8v8 games
-[*][b]Shift hive build multiplier[/b] x1.25 -> x1.4 [i](6.7 seconds with a Shift hive, halfway between vanilla and CompMod)[/i], since vanilla cysting is broken in normal player counts
+[*][b]Build time[/b] 6.7 -> 10 seconds, between vanilla and CompMod (12 seconds), a better fit for 8v8 games
+[*][b]Shift hive build multiplier[/b] x1.25 -> x1.4 [i](7.1 seconds with a Shift hive, between vanilla's 5.3 and CompMod's 8)[/i], since vanilla cysting is broken in normal player counts
 [*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
 [*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
-[*][b]Mature cyst health[/b] 450 -> 375, halfway between the CompMod value (300) and the CBM value (450)
+[*][b]Mature cyst health[/b] 450 -> 330, 10% above the CompMod value (300)
+[*][b]Minimum mature cyst health[/b] 225 -> 220, 10% above vanilla (200). Cysts far from a hive get less health, down to this minimum
 [/list]
+
+[h2]Harvesters[/h2]
+[list]
+[*][b]Health[/b] 2300 -> 2100, armor 225 -> 200
+[*][b]Mature health[/b] 2600 -> 2450, armor 375 -> 350
+[/list]
+A midpoint between vanilla and CBM for 8v8 that also works for 6v6 and 7v7.
 
 [h2]Tunnels[/h2]
 [list]
