@@ -230,17 +230,21 @@ function TunnelAbility:CreateStructure(coords, player, lastClickedPosition)
 
     local tunnelEntrance = tunnelManager:CreateTunnelEntrance(coords.origin, techId)
 
-    -- B2TP: gorge-dropped tunnels come up fully mature, so they spread infestation straight
-    -- away instead of waiting out kTunnelEntranceMaturationTime.
+    -- B2TP: a gorge tunnel dropped onto infestation comes up fully mature, so it spreads
+    -- infestation straight away instead of waiting out kTunnelEntranceMaturationTime.
+    -- Dropped off infestation it is left as the game makes it, as in CompMod: unbuilt, at
+    -- maturity 0, and it cannot build itself there, so a gorge builds it with heal spray.
+    -- Maturity only grows once it is built; when it completes, the tunnel turns into an
+    -- Infested Tunnel (TunnelEntrance:OnMaturityComplete) and starts spreading infestation.
     --
     -- Applied here rather than in TunnelEntrance:OnInitialized (which is what CompMod hooks)
-    -- so the commander's tunnels are untouched: those still spawn at maturity 0, spread no
-    -- infestation until they mature, and still have to research Infested Tunnel.
+    -- so the commander's tunnels are untouched: those still spawn at maturity 0 and spread no
+    -- infestation until they mature.
     --
     -- OnMaturityComplete is called before UpdateMaturity because it sets the tech id to
     -- InfestedTunnel, and GetMatureMaxHealth/GetMatureMaxArmor branch on that -- this order
     -- therefore yields the mature *infested* health and armor rather than the plain values.
-    if Server and tunnelEntrance then
+    if Server and tunnelEntrance and GetIsPointOnInfestation(coords.origin) then
         tunnelEntrance._maturityFraction = 1
         tunnelEntrance:OnMaturityComplete()
         tunnelEntrance:UpdateMaturity(true)
