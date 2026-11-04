@@ -1,8 +1,8 @@
--- The Exosuit eject help card. CBM replaces its text for every language with English ending in
+-- The Exosuit eject help card. Vanilla's text ends in
 -- "Exosuit unlocks after %{unlockTime}d seconds if you're not back inside!" (30 s). B2TP frees an
 -- ejected suit at once (Exosuits/Post/Exosuit.lua), so that line would be false; this keeps
--- CBM's wording and replaces only the last sentence. Same mechanism and scope as CBM: a
--- Locale substitution, set after CBM's (its Locale.lua loads long before the help screen).
+-- vanilla's English wording and replaces only the last sentence, for every language: a Locale
+-- substitution (Locale.lua loads long before the help screen).
 
 if not Client then return end
 if not Locale or not Locale.substitutions then return end

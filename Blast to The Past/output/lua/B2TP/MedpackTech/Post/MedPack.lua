@@ -36,6 +36,10 @@ function MedPack:OnTouch(recipient)
             commanderStats["medpack"].picks = commanderStats["medpack"].picks + 1
             commanderStats["medpack"].refilled = commanderStats["medpack"].refilled + recipient:GetHealth() - oldHealth
 
+            if recipient.GetSteamId and recipient:isa("Player") then
+                StatsUI_RegisterTSS("MarineMedsReceived", recipient:GetSteamId(), 1)
+            end
+
         end
 
     end

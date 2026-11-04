@@ -1,8 +1,6 @@
 -- Advanced Swipe on the alien tech map, in the Biomass 8 column, one slot below the lowest ability
--- already there. CBM 3.6 moved Stab to Biomass 8, under Stomp, which is where B2TP used to put
--- Advanced Swipe, so the slot is found rather than fixed:
---   CBM 3.6: Stomp (9.5, 8), Stab (9.5, 9)  -> Advanced Swipe (9.5, 10)
---   CBM 3.5: Stomp (9.5, 8)                 -> Advanced Swipe (9.5, 9)
+-- already there. Earlier tech maps moved abilities between biomass columns, so the slot is found
+-- rather than fixed. In vanilla build 345: Stomp (9.5, 8) -> Advanced Swipe (9.5, 9).
 
 local function B2TP_HasTechMapEntry(techMap, techId)
     for i = 1, #techMap do

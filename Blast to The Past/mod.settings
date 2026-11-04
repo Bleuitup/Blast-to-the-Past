@@ -5,9 +5,9 @@ description = [=[[b]This mod is whitelisted.[/b]
 mod id 3426836832
 
 [h1]Blast to the Past (B2TP)[/h1]
-[b]Requires:[/b] Community Balance Mod, loaded alongside B2TP. The CBM: Core Edition Toggle is no longer needed: B2TP switches CBM's Content Edition off by itself.
+[b]Runs on:[/b] NS2 build 345. Since v3.0 B2TP is updated to run on top of build 345 by itself, with no other balance mod needed.
 
-[b]TL;DR:[/b] Blast to the Past, built on top of the Community Balance Mod's Core Edition. Everything CBM changes still applies; this list is only what B2TP changes on top of it. The aim is unchanged: tune NS2 for 6v6-8v8, the original size public servers ran at. Most changes either return values or mechanics to what vanilla used to run years ago, or come from ENSL CompMod, to improve skill expression while staying suited to a managed, coordinated public server.
+[b]TL;DR:[/b] Blast to the Past, built on top of NS2 build 345. Everything else is vanilla; this list is only what B2TP changes on top of it. The aim is unchanged: tune NS2 for 6v6-8v8, the original size public servers ran at. Most changes either return values or mechanics to what vanilla used to run years ago, or come from ENSL CompMod, to improve skill expression while staying suited to a managed, coordinated public server.
 
 [hr][/hr]
 
@@ -36,7 +36,7 @@ mod id 3426836832
 
 [h2]Onos[/h2]
 [list]
-[*][b]Boneshield HP[/b] 1000 -> 600 [i](1000 was balanced for 10v10)[/i]. CBM's Boneshield regeneration and damage reduction still apply
+[*][b]Boneshield HP[/b] 1000 -> 600 [i](1000 was balanced for 10v10)[/i]. Boneshield regeneration and damage reduction still apply
 [*][b]Stomp energy[/b] 30 -> 45 [i](curbs stomp spam when the alien team has no adrenaline or a shift to sustain it)[/i]
 [/list]
 
@@ -46,16 +46,8 @@ mod id 3426836832
 [*][b]Shift hive build multiplier[/b] x1.25 -> x1.4 [i](7.1 seconds with a Shift hive, between vanilla's 5.3 and CompMod's 8)[/i], since vanilla cysting is broken in normal player counts
 [*][b]Flame damage[/b] split by source [i](CompMod value)[/i]: welders x5 -> x4, flamethrowers x5 -> x7
 [*][b]Detection range[/b] 8m -> 10m [i](CompMod value)[/i]
-[*][b]Mature cyst health[/b] 450 -> 330, 10% above the CompMod value (300)
-[*][b]Minimum mature cyst health[/b] 225 -> 220, 10% above vanilla (200). Cysts far from a hive get less health, down to this minimum
+[*][b]Mature cyst health[/b] 400 -> 350, halfway between vanilla and CompMod (300)
 [/list]
-
-[h2]Harvesters[/h2]
-[list]
-[*][b]Health[/b] 2300 -> 2100, armor 225 -> 200
-[*][b]Mature health[/b] 2600 -> 2450, armor 375 -> 350
-[/list]
-A midpoint between vanilla and CBM for 8v8 that also works for 6v6 and 7v7.
 
 [h2]Tunnels[/h2]
 [list]
@@ -67,18 +59,18 @@ A midpoint between vanilla and CBM for 8v8 that also works for 6v6 and 7v7.
 
 [h1]MARINES[/h1]
 [h2]Round start[/h2]
-Marines start with 1 IP (vanilla!) instead of CBM's 2 IPs from 7 players, but
+Marines start with vanilla's single IP up to 8 players, but
 [list]
 [*][b]7v7[/b] +5 Tres
 [*][b]8v8[/b] +10 Tres
 [/list]
-This serves as an interpolation between 1 IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10, which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 amounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
+This serves as an interpolation between 1 IP and no bonuses for 6v6 (vanilla behavior) and +1 IP for the arcade clusterfugg that is 10v10 (vanilla gives a second IP from 9 players), which is essentially +20 Tres. The only way to give "half an IP" is to give Tres. Giving a straight IP for 8v8 amounts to nonstop early marine pressure and can snowball easily into marines choking out the aliens.
 
 [h2]ARCs[/h2]
 [list]
-[*][b]ARC health[/b] 2600 -> 2100 [i](interpolated -- CompMod's own value is 1800)[/i]
-[*][b]ARC armor[/b] 400 -> 500 [i](CompMod value)[/i], limited to 4 [i](CompMod value)[/i]
-[*][b]SPARC[/b] health 2600 -> 2100, armor 400 -> 500, matching the ARC as CBM intends
+[*][b]ARC health[/b] 2600 -> 2000, armor 400 -> 500, limited to 4 [i](vanilla's Thunderdome values)[/i]
+[*][b]Deployed ARCs[/b] keep the same 2000 health [i](in vanilla Thunderdome their health jumps to 2600 on deploy)[/i]
+[*][b]SPARC[/b] health 2600 -> 2000, armor 400 -> 500, matching the ARC
 [/list]
 
 [h2]Medpack Tech[/h2]
@@ -92,7 +84,7 @@ This makes medding scale as the round progresses, since vanilla meds are truly l
 
 [h2]Weapons[/h2]
 [list]
-[*][b]Shotgun weapon upgrades[/b] 7.84% -> 10% per level vs players, 15.68% -> 20% vs structures, the same as every other weapon
+[*][b]Shotgun weapon upgrades[/b] 7.84% -> 10% per level vs players, 15.68% -> 15% vs structures, the same as every other weapon
 [*][b]Shotgun falloff start[/b] 5m -> 7.5m
 [*][b]Shotgun falloff end[/b] 15m -> 17.5m
 [*][b]Dropped weapon stay time[/b] 16 -> 20 seconds
@@ -111,7 +103,7 @@ The shotgun falloff change is half of the CompMod change (CompMod moves falloff 
 
 [b]Developed for:[/b] the NS2 Sudamerica community. Join us at [url=https://discord.gg/NS2-Sudamerica]discord.gg/NS2-Sudamerica[/url].
 
-Several changes here are ported or adapted from ENSL CompMod / CBM, with permission from their respective authors.]=]
+Several changes here are ported or adapted from ENSL CompMod, with permission from their respective authors.]=]
 image       = "preview.jpg"
 tag_modtype = "Gameplay Tweak"
 tag_support = "Must be run on Server"

@@ -1,30 +1,22 @@
-local SpawnInfantryPortal = debug.getupvaluex(MarineTeam.SpawnInitialStructures, "SpawnInfantryPortal")
+-- Starting resources by team size.
+--
+-- Vanilla decides the starting Infantry Portals (GetInitialInfantryPortalCount in NS2Utility.lua:
+-- 1 IP up to 8 players, 2 from 9, 3 from 15). B2TP adds Tres for the team sizes where vanilla still
+-- gives 1 IP but a team is big enough to want more: +5 Tres with 7 players, +10 Tres with 8. This
+-- interpolates between 1 IP for 6v6 and the second IP vanilla gives from 9 players.
+--
+-- Wraps vanilla's function, so its IP count, warmup structures and sandbox setup all stay as they are.
+local oldSpawnInitialStructures = MarineTeam.SpawnInitialStructures
 
 function MarineTeam:SpawnInitialStructures(techPoint)
 
-    self.warmupStructures = {}
-    self.startTechPoint = techPoint
-    self.spawnedInfantryPortal = 0
-    takenInfantryPortalPoints = {}
+    local tower, commandStation = oldSpawnInitialStructures(self, techPoint)
 
-    local tower, commandStation = PlayingTeam.SpawnInitialStructures(self, techPoint)
-
-    self:SpawnInfantryPortal(techPoint)
-   -- increase TRes to compensate for no IP
-	if self:GetNumPlayers() == 7 then
-		self:AddTeamResources(5)
-	
-	-- increase TRes to compensate for no IP
-    elseif self:GetNumPlayers() >= 8 then
-	
-		self:AddTeamResources(10)
-		
-    end
-
-    if Shared.GetCheatsEnabled() and MarineTeam.gSandboxMode then
-        MakeTechEnt(techPoint, AdvancedArmory.kMapName, 3.5, -2, kMarineTeamType)
-        -- CBM spawns its Exo Prototype Lab here; plain Prototype Lab when CBM is absent.
-        MakeTechEnt(techPoint, (ExoPrototypeLab and ExoPrototypeLab.kMapName) or PrototypeLab.kMapName, -3.5, 2, kMarineTeamType)
+    local numPlayers = GetNumPlayersForTeamNumber(self:GetTeamNumber())
+    if numPlayers == 7 then
+        self:AddTeamResources(5)
+    elseif numPlayers == 8 then
+        self:AddTeamResources(10)
     end
 
     return tower, commandStation

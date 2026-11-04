@@ -1,6 +1,6 @@
--- Medpack Tech on CBM's marine tech map. Both Medtechs are researched at the Command Station, so
--- they hang off it, in the top row beside Advanced Marine Support (CBM's row for Command Station
--- research). CBM 3.5 and 3.6 both put the Command Station at (7, 1) and Advanced Marine Support at
+-- Medpack Tech on vanilla's marine tech map. Both Medtechs are researched at the Command Station, so
+-- they hang off it, in the top row beside Advanced Marine Support (the row for Command Station
+-- research). Vanilla (build 345) puts the Command Station at (7, 1) and Advanced Marine Support at
 -- (7, 0), with the two cells to its left free:
 --
 --   Medtech #2 (5, 0) <-- Medtech #1 (6, 0)     Advanced Marine Support (7, 0)
@@ -9,13 +9,13 @@
 --                                                        |
 --                                               Command Station (7, 1)
 --
--- The fork is drawn as an elbow off the midpoint of CBM's own Command Station -> Advanced Marine
--- Support line. All three lines are the default research color. Nothing of CBM's is moved: earlier
--- versions moved Advanced Weaponry, whose spot CBM 3.6 changed.
+-- The fork is drawn as an elbow off the midpoint of vanilla's own Command Station -> Advanced Marine
+-- Support line. All three lines are the default research color. Nothing of vanilla's is moved: earlier
+-- versions moved Advanced Weaponry, whose spot later tech maps changed.
 --
 -- The Armory and Advanced Armory requirements are not drawn: from the top row those lines would
--- cross the Command Station's own. (CBM 3.6 also changed a line's 5th field from a flag to a Color,
--- which is what made the old purple requirement lines invisible there.)
+-- cross the Command Station's own. (A line's 5th field is a Color, not a flag; the old flag is what
+-- made the old purple requirement lines invisible.)
 
 local function FindEntry(techId)
     for _, entry in ipairs(kMarineTechMap) do

@@ -1,8 +1,8 @@
 -- Medpack Tech is researched at the Command Station. Medtech #1 requires an Armory, Medtech #2
 -- requires an Advanced Armory and Medtech #1 (see MarineTeam.lua). The buttons go in slots 2 and 3,
--- next to Advanced Marine Support; both are empty on CBM's Command Station (3.5 and 3.6).
+-- next to Advanced Marine Support; both are empty on vanilla's Command Station.
 --
--- Wraps rather than replaces, so anything CBM puts on the Command Station is kept. CommandStation
+-- Wraps rather than replaces, so anything vanilla puts on the Command Station is kept. CommandStation
 -- has no subclasses, so wrapping it alone is enough.
 
 local kMedTechButtonSlots =
