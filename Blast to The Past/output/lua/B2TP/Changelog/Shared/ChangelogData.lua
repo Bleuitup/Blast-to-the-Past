@@ -112,7 +112,7 @@ kChangelogs.en =
     "",
     "Developed for the NS2 Sudamerica community. Join us at discord.gg/NS2-Sudamerica",
     "",
-    "Several changes here are ported or adapted from ENSL CompMod / CBM, with permission from their respective authors.",
+    "Several changes here are ported or adapted from ENSL CompMod, with permission from their respective authors.",
 }
 
 kChangelogs.pt =
@@ -183,7 +183,7 @@ kChangelogs.pt =
     "",
     "Desenvolvido para a comunidade NS2 Sudamerica. Entre com a gente em discord.gg/NS2-Sudamerica",
     "",
-    "Várias mudanças aqui são portadas ou adaptadas do ENSL CompMod / CBM, com permissão de seus respectivos autores.",
+    "Várias mudanças aqui são portadas ou adaptadas do ENSL CompMod, com permissão de seus respectivos autores.",
 }
 
 kChangelogs.es =
@@ -254,7 +254,7 @@ kChangelogs.es =
     "",
     "Desarrollado para la comunidad NS2 Sudamerica. Sumate en discord.gg/NS2-Sudamerica",
     "",
-    "Varios cambios acá son portados o adaptados de ENSL CompMod / CBM, con permiso de sus respectivos autores.",
+    "Varios cambios acá son portados o adaptados de ENSL CompMod, con permiso de sus respectivos autores.",
 }
 
 kB2TPChangelogLanguages = { "en", "pt", "es" }
