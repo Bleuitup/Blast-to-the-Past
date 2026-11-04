@@ -31,7 +31,7 @@ function TunnelAbility:GetTechIds()
     assert(false)
 end
 
--- CBM 3.6's DropStructureAbility:GetPositionForStructure asks every structure ability
+-- Vanilla's DropStructureAbility:GetPositionForStructure asks every structure ability
 -- structureAbility.GetDropMapName() == Clog.kMapName (its clog bridge assist) with a dot, so
 -- without self. The inherited StructureAbility version is assert(false), which logged an
 -- assertion every frame a Gorge had a tunnel selected. That check only needs "not a Clog".

@@ -31,7 +31,6 @@ end
 local pieces = {
 "Alien Abilities",
 "ARCs",
-"CBM Core",
 "Changelog",
 "Costs",
 "Cysts",

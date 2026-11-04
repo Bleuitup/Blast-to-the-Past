@@ -1,8 +1,9 @@
 -- Route tunnel entrances to the TunnelMapBlip class so they get minimap labels.
 -- Ported from ENSL CompMod (lua/CompMod/Mixins/MapBlipMixin.lua).
 --
--- Identical to CBM's CreateMapBlip apart from the TunnelEntrance branch. Keep it in step with
--- CBM's copy: this replaces it outright, so anything CBM adds there is lost unless repeated here.
+-- Identical to vanilla's CreateMapBlip (build 345) apart from the TunnelEntrance branch. Keep it in
+-- step with vanilla's: this replaces it outright, so anything vanilla adds there is lost unless
+-- repeated here.
 
 local function CreateMapBlip(self, blipType, blipTeam, _)
 
@@ -21,7 +22,7 @@ local function CreateMapBlip(self, blipType, blipTeam, _)
 
     -- This may fail if there are too many entities.
     if mapBlip then
-        -- CBM fog of war: mark a ghost's blip as one, so it fades and grays and the client
+        -- Fog of war: mark a ghost's blip as one, so it fades and grays and the client
         -- option to hide ghosts applies to it. False for every other entity.
         mapBlip.isFogOfWarMapBlip = self:isa("FogOfWarEntity")
         mapBlip:SetOwner(self:GetId(), blipType, blipTeam)
